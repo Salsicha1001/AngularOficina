@@ -19,7 +19,7 @@ export class ClientsService {
 
   get(): Observable<Client[]> {
     if(!this.loaded){
-      this.http.get<Client[]>(this.url1).pipe(tap((a =>console.log(a))))
+      this.http.get<Client[]>(this.url1)
       .subscribe(this.ClientSub$)
       this.loaded = true
     }

@@ -19,23 +19,20 @@ export class CarService {
   get(): Observable<Veiculo[]>{
       if(!this.loaded){
         combineLatest(
-       this.http.get<Veiculo[]>(this.url),
-        this.clienteService.get()).pipe(map(([car, user])=>{
+        this.http.get<Veiculo[]>(this.url),
+        this.clienteService.get())
+        .pipe(tap(([car, user])=>console.log(car, user))
+        ,map(([car,user])=>{
           for(let p of car){
-            let ids = (p.user as string[])
-            console.log(p)
-            p.user = ids.map((id)=>user.find(u =>u.id ==id))
+            let ids =p.user as string[]
+            p.user = ids.map((id)=> user.find(client=>client.id == id))
           }
           return car
-
         }),
-        tap((car)=>{ console.log(car)})
-        )
+        tap(([car])=>console.log(car))
+        ).subscribe(this.CartSub$)
+        this.loaded = true
         
-        
-      //this.http.get<Veiculo[]>(`${this.url}/list1`).pipe( tap((car)=>console.log(car)))
-      .subscribe(this.CartSub$)
-     this.loaded = true
       }
       return this.CartSub$.asObservable()
   }
