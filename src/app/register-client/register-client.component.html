@@ -5,14 +5,15 @@
     margin-top: 2px;">
  
  <h2>Cadastro de Clientes:</h2>
-<form (ngSubmit)="onSubmit()" #formClient="ngForm">
+<form (ngSubmit)="onSubmit()" #formClient="ngForm" #formCar ="ngForm" >
+  
 <mat-form-field appearance="legacy">
     <mat-label>Nome</mat-label>
     <input matInput placeholder="" [(ngModel)]="cliente.Name" name="name" #nameField="ngModel" required> 
     <mat-hint>Preencha com o nome completo</mat-hint>
     <mat-error *ngIf="nameField.invalid && nameField.touched">Digite um nome valido</mat-error>
+    </mat-form-field>
 
-  </mat-form-field>
   <mat-form-field appearance="legacy">
     <mat-label>CPF</mat-label>
     <input matInput placeholder=""[(ngModel)]="cliente.Cpf" name="cpf" required>
@@ -20,7 +21,7 @@
   </mat-form-field>
   <mat-form-field appearance="legacy">
     <mat-label>Date de nascimento</mat-label>
-    <input matInput [matDatepicker]="picker" [(ngModel)]="cliente.Date" (dateInput)="addEvent($event)" name="dates" required>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="cliente.Dates" (dateInput)="addEvent($event)"name="dates" required>
     <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
@@ -45,43 +46,45 @@
   </mat-radio-group>
   <br>
 
-<!--
+
  <h3>Cadastro do Veiculo:</h3>
  <mat-form-field appearance="legacy">
   <mat-label>Modelo</mat-label>
-  <input matInput placeholder="" [(ngModel)]="model">
+  <input matInput placeholder="" [(ngModel)]="car.Modelo" name="modelo" required>
   <mat-hint>Modelo do carro</mat-hint>
 </mat-form-field>
 <mat-form-field appearance="legacy">
   <mat-label>Marca</mat-label>
-  <input matInput placeholder="" [(ngModel)]="marca">
+  <input matInput placeholder="" [(ngModel)]="car.Marca" name="marca" required>
   <mat-hint>Marca do carro</mat-hint>
 </mat-form-field>
 <mat-form-field appearance="legacy">
   <mat-label>Ano</mat-label>
-  <input matInput placeholder="" [(ngModel)]="ano">
+  <input matInput placeholder="" [(ngModel)]="car.Ano"  name="ano" required> 
   <mat-hint>Ano do carro</mat-hint>
 </mat-form-field>
 <br>
 <mat-form-field appearance="legacy">
   <mat-label>Cor</mat-label>
-  <input matInput placeholder="" [(ngModel)]="cor">
+  <input matInput placeholder="" [(ngModel)]="car.Cor" name="cor" required>
   <mat-hint>Cor do carro</mat-hint>
 </mat-form-field>
 <mat-form-field appearance="legacy">
   <mat-label>Placa</mat-label>
-  <input matInput placeholder="" [(ngModel)]="placa">
+  <input matInput placeholder="" [(ngModel)]="car.Placa" name="placa" required>
   <mat-hint>placa do carro</mat-hint>
 </mat-form-field>
 <mat-form-field appearance="legacy">
   <mat-label>KM</mat-label>
-  <input matInput placeholder="" [(ngModel)]="km">
+  <input matInput placeholder="" [(ngModel)]="car.KM" name="km">
   <mat-hint>KM do carro</mat-hint>
 </mat-form-field>
--->
- <button mat-raised-button color="primary"style="margin-left:50%" [disabled]="!formClient.valid" >Salvar</button>
- <button mat-raised-button type="reset" color=""style="margin-left:5px; background-color:yellow;"(click)="clear()">Limpar</button>
+
+ <button mat-raised-button color="primary"style="margin-left:50%" [disabled]="!formClient.valid && !formCar.valid" >Salvar</button>
+<button mat-raised-button type="reset" color=""style="margin-left:5px; background-color:yellow;">Limpar</button>
 </form>
+
 </div>
+
 
 

@@ -1,3 +1,4 @@
+import { Client } from './client.model';
 export interface Veiculo{
     Modelo:string
     Ano:number
@@ -5,4 +6,6 @@ export interface Veiculo{
     KM:number
     Cor:string,
     Placa:any
+    id?:any
+    user:Client[] |string[]  
 }

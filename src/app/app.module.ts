@@ -48,7 +48,8 @@ import { RegisterClientComponent } from './register-client/register-client.compo
 import { FormsModule,ReactiveFormsModule }   from '@angular/forms';
 import { ListComponent } from './list/list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { EditClientComponent } from './edit-client/edit-client.component'; 
+import { EditClientComponent } from './edit-client/edit-client.component';
+import { AddCarComponent } from './add-car/add-car.component'; 
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { EditClientComponent } from './edit-client/edit-client.component';
     NavBarComponent,
     RegisterClientComponent,
     ListComponent,
-    EditClientComponent
+    EditClientComponent,
+    AddCarComponent
   ],
   imports: [
     HttpClientModule,
@@ -109,7 +111,8 @@ import { EditClientComponent } from './edit-client/edit-client.component';
   providers: [],
   bootstrap: [AppComponent],
   entryComponents:[
-    EditClientComponent
+    EditClientComponent,
+    AddCarComponent
   ]
 })
 export class AppModule { }

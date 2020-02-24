@@ -1,3 +1,4 @@
+import { CarService } from './../Services/car.service';
 import { Observable } from 'rxjs';
 import { ClientDataSource } from './../list/list.component';
 import { DataSource } from '@angular/cdk/collections';
@@ -13,6 +14,7 @@ import * as _moment from 'moment';
 import {defaultFormatUtc as _rollupMoment} from 'moment';
 import { ClientsService } from '../Services/clients.service';
 import { MatSnackBarConfig, MatSnackBar } from '@angular/material';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 const moment = _rollupMoment || _moment;
 export const MY_FORMATS = {
@@ -46,49 +48,46 @@ export const MY_FORMATS = {
 
 })
 export class RegisterClientComponent implements OnInit {
-  
-
   cliente:Client={
-    Name:'', Cpf:null,Date:new Date(),Tell:null,Email:'',people:''
+    Name:'', Cpf:null,Dates:new Date(),Tell:null,Email:'',people:'', 
   }
 
-
+  car:Veiculo={
+    Ano:null,Modelo:"",Placa:"",Marca:"",Cor:'',KM:null, user:[this.cliente] }
+   
+  
+  
   client:Client[]=[]
   newClient:Client[]= []
+  newCar : Veiculo[]=[]
 
-  //Dia/mes/ano
   day:number
   month:number
   year:number
   finaly:string
 
-
-  model:string
-  marca:string
-  ano:number
-  cor:string
-  placa:any
-  km:number
   veiculo :Veiculo[]=[]
+  CarService: any;
  
 
-  constructor(private router:Router,private _adapter: DateAdapter<any>, private clientsService:ClientsService,
-    private snackBar: MatSnackBar) { }
+  constructor(private router:Router,private _adapter: DateAdapter<any>, private clientsService:ClientsService, private carService:CarService,
+    private snackBar: MatSnackBar, private fb:FormBuilder) { }
 
   ngOnInit() {
   }
  
- 
-  addEvent(event){
-    this.day = this.cliente.Date._i.date
-    this.month = this.cliente.Date._i.month+1
-    this.year = this.cliente.Date._i.year
+  addEvent($event){
+    this.day = this.cliente.Dates._i.date
+    this.month = this.cliente.Dates._i.month+1
+    this.year = this.cliente.Dates._i.year
     this.finaly = this.day+"/"+this.month+"/"+this.year
-  //  console.log(this.finaly)
+  console.log(this.finaly)
   //
   }
+  
 
-  save(Name:string, Cpf:number,Date:string,  Tell:number, Email:string, people:string){
+  /*{save(Name:string, Cpf:number,Date:string,  Tell:number, Email:string, people:string){
+
    // console.log(this.finaly)
     let c = {Name, Cpf, Tell, Date:this.finaly,Email,people}
     console.log(c)
@@ -114,14 +113,32 @@ export class RegisterClientComponent implements OnInit {
       
     })
 
-  }
+  }}
+*/
+  
 
-  onSubmit(){
-    console.log(this.cliente)
+
+
+
+onSubmit(){
+  this.cliente.Dates = this.finaly
+    console.log(this.car.user[0])
     
-    this.clientsService.saveClient(this.cliente).subscribe((c:Client)=>{
 
-      this.newClient.push(c)
+    this.clientsService.save(this.car).subscribe((v:Veiculo)=>{
+
+      this.newCar.push(v)
+      this.cliente.Name=""
+      this.cliente.Tell= null
+      this.cliente.Cpf = null
+      this.cliente.Dates=""
+      this.cliente.Email=""
+      this.car.Ano=null
+      this.car.Modelo=""
+      this.car.Placa=""
+      this.car.Marca=""
+      this.car.Cor=''
+      this.car.KM=null
   
      },
      (err)=>{
@@ -131,27 +148,19 @@ export class RegisterClientComponent implements OnInit {
      if(err.status == 0){
        config.panelClass=['snack_error'];
        this.snackBar.open("Deu um erro ao conecta ao server")
-      }
-       
-     })
+      } 
+     }) 
+   
+   
+   
   }
-
-  clear(){
-    this.cliente.Name=""
-    this.cliente.Tell= null
-    this.cliente.Cpf = null
-    this.cliente.Date=""
-    this.cliente.Email=""
-
-  }
-
 }
 export class ClientData extends DataSource<any>{
   constructor(private clientsService:ClientsService){ 
    super();
 }
 connect():Observable<Client[]>{
-  return this.clientsService.getClients()
+  return this.clientsService.get()
 }
 disconnect(){
 
