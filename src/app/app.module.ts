@@ -49,7 +49,8 @@ import { FormsModule,ReactiveFormsModule }   from '@angular/forms';
 import { ListComponent } from './list/list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EditClientComponent } from './edit-client/edit-client.component';
-import { AddCarComponent } from './add-car/add-car.component'; 
+import { AddCarComponent } from './add-car/add-car.component';
+import { AddEstoqueComponent } from './add-estoque/add-estoque.component'; 
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { AddCarComponent } from './add-car/add-car.component';
     RegisterClientComponent,
     ListComponent,
     EditClientComponent,
-    AddCarComponent
+    AddCarComponent,
+    AddEstoqueComponent
   ],
   imports: [
     HttpClientModule,

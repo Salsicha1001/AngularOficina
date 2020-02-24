@@ -1,0 +1,40 @@
+<mat-card style="width: 30%;">
+    <mat-card-title>Cadastro de Peça</mat-card-title>
+    <form (ngSubmit)="onSubmit()" #formPeca="ngForm" >
+        <mat-form-field appearance="legacy">
+            <mat-label>Nome da Peça</mat-label>
+            <input matInput placeholder="" [(ngModel)]="peca.name" name="name" #nameField="ngModel" required> 
+            <mat-hint>Preencha com o nome da peça</mat-hint>
+            <mat-error *ngIf="nameField.invalid && nameField.touched">Digite um nome valido</mat-error>
+            </mat-form-field> 
+            <mat-form-field appearance="legacy">
+                <mat-label>Marca da Peça</mat-label>
+                    <input matInput placeholder="" [(ngModel)]="peca.marca" name="marca" #nameField="ngModel" required> 
+                        <mat-hint>Preencha com o marca da peça</mat-hint>
+                            <mat-error *ngIf="nameField.invalid && nameField.touched">Digite a Marca</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="legacy">
+                <mat-label>Codigo de Barras</mat-label>
+                    <input matInput placeholder="" type="number" [(ngModel)]="peca.codBarras" name="barra" #barraField="ngModel" minlength="13" required> 
+                        <mat-hint>Preencha com o cod de barras</mat-hint>
+                            <mat-error *ngIf="barraField.invalid && (barraField.touched || barraField.dirty)">Digite o Codigo</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="legacy">
+                <mat-label>Quantidade</mat-label>
+                    <input matInput placeholder="" type="number" [(ngModel)]="peca.qtd" name="qtd" #qtdField="ngModel"  required> 
+                        <mat-hint>Quantidade do produto</mat-hint>
+                            <mat-error *ngIf="qtdField.invalid && (qtdField.touched)">Digite a quantidade</mat-error>
+
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="legacy">
+                <mat-label>Preço Unitario</mat-label>
+                <input matInput type="number" [(ngModel)]="peca.price" name="price" #priceField="ngModel">
+                <span matPrefix>$&nbsp;</span>
+                <mat-error *ngIf="priceField.invalid && (priceField.touched)">Digite o preço</mat-error>
+              </mat-form-field>
+              <button mat-button color="primary" [disabled]="!formPeca.valid "><mat-icon>done</mat-icon></button>
+              <button mat-button type="reset" color="warn"><mat-icon>delete</mat-icon></button>
+    </form>
+</mat-card>

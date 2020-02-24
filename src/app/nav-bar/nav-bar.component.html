@@ -4,11 +4,19 @@
         <button mat-button [matMenuTriggerFor]="menu">Cadastro</button>
             <mat-menu #menu="matMenu">
                 <button mat-menu-item routerLink="/registerclient">Cliente</button>
-                <button mat-menu-item>Peça</button>
+                <button mat-menu-item routerLink="/cadastropeca">Peça</button>
                 
                 
-        </mat-menu>
-        <button mat-button routerLink="/list">Clientes</button>
+            </mat-menu>
+                
+            <button mat-button [matMenuTriggerFor]="list">Listagem</button>
+            <mat-menu #list="matMenu">
+                <button mat-menu-item routerLink="/list">Clientes</button>
+               
+                
+                
+            </mat-menu>
+  
     </mat-toolbar>
         <router-outlet></router-outlet>
         
