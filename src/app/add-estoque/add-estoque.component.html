@@ -1,5 +1,8 @@
-<mat-card style="width: 30%;">
-    <mat-card-title>Cadastro de Peça</mat-card-title>
+<mat-card style=" border: 1px solid;
+padding: 10px;
+box-shadow: 5px 10px 8px 10px #888888;
+margin-top: 2px;">
+    <mat-card-title>Cadastro de Peça:</mat-card-title>
     <form (ngSubmit)="onSubmit()" #formPeca="ngForm" >
         <mat-form-field appearance="legacy">
             <mat-label>Nome da Peça</mat-label>
@@ -12,8 +15,14 @@
                     <input matInput placeholder="" [(ngModel)]="peca.marca" name="marca" #nameField="ngModel" required> 
                         <mat-hint>Preencha com o marca da peça</mat-hint>
                             <mat-error *ngIf="nameField.invalid && nameField.touched">Digite a Marca</mat-error>
+            </mat-form-field>   
+            <mat-form-field appearance="legacy">
+                <mat-label>Marca da Peça</mat-label>
+                    <input matInput placeholder="" [(ngModel)]="peca.marca" name="marca" #nameField="ngModel" required> 
+                        <mat-hint>Preencha com o marca da peça</mat-hint>
+                            <mat-error *ngIf="nameField.invalid && nameField.touched">Digite a Marca</mat-error>
             </mat-form-field>
-            <br>
+            
             <mat-form-field appearance="legacy">
                 <mat-label>Codigo de Barras</mat-label>
                     <input matInput placeholder="" type="number" [(ngModel)]="peca.codBarras" name="barra" #barraField="ngModel" minlength="13" required> 
@@ -27,7 +36,7 @@
                             <mat-error *ngIf="qtdField.invalid && (qtdField.touched)">Digite a quantidade</mat-error>
 
             </mat-form-field>
-            <br>
+            
             <mat-form-field appearance="legacy">
                 <mat-label>Preço Unitario</mat-label>
                 <input matInput type="number" [(ngModel)]="peca.price" name="price" #priceField="ngModel">
@@ -38,3 +47,35 @@
               <button mat-button type="reset" color="warn"><mat-icon>delete</mat-icon></button>
     </form>
 </mat-card>
+<mat-card style=" border: 1px solid;
+padding: 10px;
+box-shadow: 5px 10px 8px 10px #888888;
+margin-top: 2px;">
+<mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium">
+   </mat-form-field>
+   <table > 
+    <tr>
+      <td>id</td>
+      <td>Nome</td>
+      <td>Marca</td>
+      <td>Cod Barras</td>
+      <td>Quantidade</td>
+      <td>Preço</td>
+         
+    </tr>
+    <tbody *ngIf="simpleRqProd$ |async as Peca">
+        <tr *ngFor="let c of Peca">
+            <td>{{c.id}}</td>
+            <td>{{c.NOME}}</td>
+            <td>{{c.MARCA}}</td>
+            <td>{{c.COD_BARRA}}</td>
+            <td>{{c.QTD}}</td>
+            <td>{{c.PRICE}}</td>
+      
+    </tr>
+    </tbody>
+  </table>
+  </mat-card>
+  
