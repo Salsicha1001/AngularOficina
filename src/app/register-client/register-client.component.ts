@@ -1,11 +1,14 @@
-import { CarService } from './../Services/car.service';
+import { CEPService } from './../Services/cep.service';
+import { Cep } from './../EdCep/cep.model';
+
+
 import { Observable } from 'rxjs';
 import { ClientDataSource } from './../list/list.component';
 import { DataSource } from '@angular/cdk/collections';
 import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
 
-import { Veiculo } from './veiculo.model';
+
 import { Client } from './client.model';
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
@@ -48,29 +51,28 @@ export const MY_FORMATS = {
 
 })
 export class RegisterClientComponent implements OnInit {
+  cep :Cep={
+    cep:'',cidade:'',bairro:'', complemento:'', estado:'',logradouro:'',numero:''
+  } 
   cliente:Client={
-    Name:'', Cpf:null,Dates:new Date(),Tell:null,Email:'',people:'', 
+    Name:'', Cpf:null,Dates:new Date(),Tell:null,Email:'',people:'', CEP:{}
   }
 
-  car:Veiculo={
-    Ano:null,Modelo:"",Placa:"",Marca:"",Cor:'',KM:null, user:[this.cliente] }
-   
+ 
   
   
   client:Client[]=[]
   newClient:Client[]= []
-  newCar : Veiculo[]=[]
+
 
   day:number
   month:number
   year:number
   finaly:string
 
-  veiculo :Veiculo[]=[]
-  CarService: any;
  
 
-  constructor(private router:Router,private _adapter: DateAdapter<any>, private clientsService:ClientsService, private carService:CarService,
+  constructor(private router:Router,private _adapter: DateAdapter<any>, private clientsService:ClientsService,private cepService:CEPService,
     private snackBar: MatSnackBar, private fb:FormBuilder) { }
 
   ngOnInit() {
@@ -122,8 +124,11 @@ export class RegisterClientComponent implements OnInit {
 
 onSubmit(){
   this.cliente.Dates = this.finaly
-    console.log(this.car.user[0])
-    
+  this.cliente.CEP = this.cepService.emmitCep
+  //console.log(this.cliente)
+  //console.log(this.cepService.emmitCep)
+
+    /*
 
     this.clientsService.save(this.car).subscribe((v:Veiculo)=>{
 
@@ -133,12 +138,7 @@ onSubmit(){
       this.cliente.Cpf = null
       this.cliente.Dates=""
       this.cliente.Email=""
-      this.car.Ano=null
-      this.car.Modelo=""
-      this.car.Placa=""
-      this.car.Marca=""
-      this.car.Cor=''
-      this.car.KM=null
+     
   
      },
      (err)=>{
@@ -153,7 +153,7 @@ onSubmit(){
    
    
    
-  }
+    */}
 }
 export class ClientData extends DataSource<any>{
   constructor(private clientsService:ClientsService){ 

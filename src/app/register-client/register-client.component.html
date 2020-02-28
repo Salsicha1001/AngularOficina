@@ -45,7 +45,7 @@
     <mat-radio-button value="Fisica">Pessoa Fisica</mat-radio-button>
   </mat-radio-group>
   <br>
-
+<!--
 
  <h3>Cadastro do Veiculo:</h3>
  <mat-form-field appearance="legacy">
@@ -78,8 +78,8 @@
   <mat-label>KM</mat-label>
   <input matInput placeholder="" [(ngModel)]="car.KM" name="km">
   <mat-hint>KM do carro</mat-hint>
-</mat-form-field>
-
+</mat-form-field>-->
+<app-cep></app-cep>
  <button mat-raised-button color="primary"style="margin-left:50%" [disabled]="!formClient.valid && !formCar.valid" >Salvar</button>
 <button mat-raised-button type="reset" color=""style="margin-left:5px; background-color:yellow;">Limpar</button>
 </form>

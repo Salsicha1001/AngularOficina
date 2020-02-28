@@ -1,10 +1,11 @@
-import { CarService } from './car.service';
-import { Veiculo } from './../register-client/veiculo.model';
+
+
 import { Client } from './../register-client/client.model';
-import { Injectable } from '@angular/core';
+import { Injectable,EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { map, tap} from 'rxjs/operators'
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class ClientsService {
   readonly url1: string = 'http://localhost:3000/list'
   private ClientSub$ : BehaviorSubject<Client[]> = new BehaviorSubject<Client[]>(null)
   private loaded : boolean= false;
+ 
   constructor(private http: HttpClient) { }
 
   get(): Observable<Client[]> {
@@ -28,9 +30,11 @@ export class ClientsService {
 }
  
 
-  save(v:Veiculo): Observable<Veiculo>{
-   return this.http.post<Veiculo>(`${this.url}/saveclient`, v)
-  }
+
+
+  //save(v:Veiculo): Observable<Veiculo>{
+//return this.http.post<Veiculo>(`${this.url}/saveclient`, v)
+ // }
   
 
   editClient(c:Client): Observable<Client>{

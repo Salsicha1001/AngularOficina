@@ -1,3 +1,4 @@
+import { CEPService } from './Services/cep.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -48,9 +49,10 @@ import { RegisterClientComponent } from './register-client/register-client.compo
 import { FormsModule,ReactiveFormsModule }   from '@angular/forms';
 import { ListComponent } from './list/list.component';
 import { HttpClientModule } from '@angular/common/http';
+
 import { EditClientComponent } from './edit-client/edit-client.component';
-import { AddCarComponent } from './add-car/add-car.component';
-import { AddEstoqueComponent } from './add-estoque/add-estoque.component'; 
+import { AddEstoqueComponent } from './add-estoque/add-estoque.component';
+import { CepComponent } from './EdCep/cep.component'; 
 
 @NgModule({
   declarations: [
@@ -59,8 +61,8 @@ import { AddEstoqueComponent } from './add-estoque/add-estoque.component';
     RegisterClientComponent,
     ListComponent,
     EditClientComponent,
-    AddCarComponent,
-    AddEstoqueComponent
+    AddEstoqueComponent,
+    CepComponent
   ],
   imports: [
     HttpClientModule,
@@ -110,11 +112,10 @@ import { AddEstoqueComponent } from './add-estoque/add-estoque.component';
 
  
   ],
-  providers: [],
+  providers: [CEPService],
   bootstrap: [AppComponent],
   entryComponents:[
-    EditClientComponent,
-    AddCarComponent
+    EditClientComponent
   ]
 })
 export class AppModule { }

@@ -1,4 +1,5 @@
-import { Veiculo } from './veiculo.model';
+import { Cep } from './../EdCep/cep.model';
+
 export interface Client{
     Name:string
     Cpf:number
@@ -6,6 +7,7 @@ export interface Client{
     Tell:number
     Email:string,
     people:string,
+    CEP?:{}
     id?:any,
-    Carro?:Veiculo[]| string[]
 }
+
