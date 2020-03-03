@@ -1,38 +1,19 @@
 <h1 mat-dialog-title>Edição de cliente</h1>
-<!--
-<mat-form-field appearance="legacy">
-    <mat-label>Nome</mat-label>
-    <input matInput placeholder="" [(ngModel)]="cliente.Name" name="name" #nameField="ngModel" required> 
-    <mat-hint>Preencha com o nome completo</mat-hint>
-    <mat-error *ngIf="nameField.invalid && nameField.touched">Digite um nome valido</mat-error>
 
-  </mat-form-field>
- <mat-form-field appearance="legacy">
-    <mat-label>CPF</mat-label>
-    <input matInput placeholder=""[(ngModel)]="cliente.Cpf" name="cpf" required>
-    <mat-hint>Preencha com CPF</mat-hint>
-  </mat-form-field>
-  <mat-form-field appearance="legacy">
-    <mat-label>Date de nascimento</mat-label>
-    <input matInput [matDatepicker]="picker" [(ngModel)]="cliente.Date"  name="dates" required>
-    <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-  <br>-->
   <mat-form-field appearance="legacy">
     <mat-label>Telefone</mat-label>
-    <input matInput placeholder="" [(ngModel)]="cliente.Tell"name="tell" #phone="ngModel" required> 
+    <input matInput placeholder="" [(ngModel)]="cliente.TELL"name="tell" #phone="ngModel" required> 
     <mat-error *ngIf="phone.errors?.required">Coloque um número de telefone</mat-error>
     <mat-hint>Celular</mat-hint>
   </mat-form-field>
   <mat-form-field appearance="legacy">
     <mat-label>E-mail</mat-label>
-    <input matInput placeholder=""[(ngModel)]="cliente.Email" name="email" type="email" required email #email="ngModel">
+    <input matInput placeholder=""[(ngModel)]="cliente.EMAIL" name="email" type="email" required email #email="ngModel">
     <mat-error *ngIf="email.errors?.required">Insira um email</mat-error>
     <mat-error *ngIf="email.errors?.email">Insira um email valido</mat-error>
     <mat-hint>E-mail de contato</mat-hint>
   </mat-form-field>
-  
+ 
   <div mat-dialog-actions>
     <button mat-button (click)="cancel()">Cancelar</button>
     <button mat-raised-button color="primary" [mat-dialog-close]="cliente" cdkFocusInitial>Salvar</button>

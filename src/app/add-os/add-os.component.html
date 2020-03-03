@@ -1,0 +1,55 @@
+<div class="mat-card" style=" border: 1px solid;
+padding: 10px;
+box-shadow: 5px 10px 8px 10px #888888;
+margin-top: 2px;">
+<form >
+  <h3>Cadastro de Ordem de Serviço:</h3>
+    <mat-form-field appearance="legacy">
+      <input type="text" placeholder="Nome" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions |async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+     <mat-form-field appearance="legacy"> 
+      <mat-label>Placa do Veículo</mat-label>
+       <mat-icon matPrefix>directions_car</mat-icon>
+      <input type="text" matInput placeholder="Placa">
+    </mat-form-field>
+    <mat-form-field appearance="legacy"> 
+      <mat-label>Modelo do Veículo</mat-label>
+      <input type="text" matInput placeholder="Modelo" value="{{teste}}">
+    </mat-form-field>
+  
+    <mat-form-field appearance="legacy"> 
+      <mat-label>Marca do Veículo</mat-label>
+      <input type="text" matInput placeholder="Marca">
+    </mat-form-field>
+    <mat-form-field appearance="legacy"> 
+      <mat-label>Ano do Veículo</mat-label>
+      <input type="text" matInput placeholder="Ano">
+    </mat-form-field>
+ <br>
+    <mat-form-field>
+      <mat-label>Funcionario</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let f of nameFuncio" [value]="nameFuncio">
+          {{f}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>Data previsão</mat-label>
+      <input matInput [matDatepicker]="picker" (dateInput)="addEvent($event)"name="dates" >
+      <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field> 
+    <mat-form-field class="example-full-width">
+      <mat-label>Observação</mat-label>
+      <textarea matInput #message placeholder="Descreva a situação do problema" maxlength="256" ></textarea>
+      <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+    </mat-form-field>
+    <button mat-mini-fab color="primary" (click)="onSubmit()"><mat-icon>done</mat-icon></button>
+  </form>
+</div>

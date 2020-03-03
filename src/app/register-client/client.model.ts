@@ -1,13 +1,13 @@
-import { Cep } from './../EdCep/cep.model';
+
 
 export interface Client{
-    Name:string
-    Cpf:number
-    Dates:any
-    Tell:number
-    Email:string,
-    people:string,
-    CEP?:{}
+    NAME:string
+    CPF:number
+    DATE:any
+    TELL:number
+    EMAIL:string,
+    PEOPLE:string,
+    CEP?:{numero?:number,complemento?:string}
     id?:any,
 }
 

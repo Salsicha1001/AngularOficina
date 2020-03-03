@@ -1,0 +1,57 @@
+<div class="mat-card" style=" border: 1px solid;
+padding: 10px;
+box-shadow: 5px 10px 8px 10px #888888;
+margin-top: 2px;">
+
+<h2>Cadastro de Funcionario:</h2>
+<form (ngSubmit)="onSubmit()" #formFun="ngForm"  >
+
+<mat-form-field appearance="legacy">
+<mat-label>Nome</mat-label>
+<input matInput placeholder=""  [(ngModel)]="funci.NOME" name="name"  required> 
+<mat-hint>Preencha com o nome</mat-hint>
+</mat-form-field>
+
+<mat-form-field appearance="legacy">
+<mat-label>CPF</mat-label>
+<input matInput placeholder="" [(ngModel)]="funci.CPF" name="cpf" required>
+<mat-hint>Preencha com CPF</mat-hint>
+</mat-form-field>
+<mat-form-field appearance="legacy">
+<mat-label>Date de nascimento</mat-label>
+<input matInput [matDatepicker]="picker" (dateInput)="addEvent($event)"name="dates" [(ngModel)]="funci.DATE"required>
+<mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+<mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+<br>
+<mat-form-field appearance="legacy">
+<mat-label>Telefone</mat-label>
+<input matInput placeholder="" name="TELL" [(ngModel)]="funci.TELL" required> 
+<mat-hint>Celular</mat-hint>
+</mat-form-field>
+<mat-form-field appearance="legacy">
+<mat-label>E-mail</mat-label>
+<input matInput placeholder=""name="email" type="email" [(ngModel)]="funci.EMAIL" required email >
+
+<mat-hint>E-mail de contato</mat-hint>
+</mat-form-field>
+
+<br>
+
+<app-cep></app-cep>
+
+<mat-form-field appearance="legacy" >
+<mat-label>Número</mat-label>
+<input matInput placeholder="100" name="num" [(ngModel)]="funci.CEP.numero" required> 
+<mat-hint>Número da casa</mat-hint>
+</mat-form-field>
+<mat-form-field appearance="legacy">
+  <mat-label>Complemento</mat-label>
+  <input matInput placeholder="100" name="com"[(ngModel)]="funci.CEP.complemento" > 
+  <mat-hint>Complemento da casa</mat-hint>
+  </mat-form-field>
+<button mat-raised-button color="primary"style="margin-left:5%" [disabled]="!formFun.valid" >Salvar</button>
+<button mat-raised-button type="reset" color=""style="margin-left:5px; background-color:yellow;">Limpar</button>
+</form>
+
+</div>

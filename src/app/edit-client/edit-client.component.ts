@@ -9,7 +9,7 @@ import { Component, OnInit, Inject } from '@angular/core';
   styleUrls: ['./edit-client.component.css']
 })
 export class EditClientComponent implements OnInit {
-  cliente:Client={ id:'',  Name:'', Cpf:0,Dates:new Date(),Tell:0,Email:'',people:'',
+  cliente:Client={ id:'',  NAME:'', CPF:0,DATE:new Date(),TELL:0,EMAIL:'',PEOPLE:'',
 }
   
   constructor(public dialogRef:MatDialogRef<EditClientComponent>,
@@ -22,8 +22,6 @@ export class EditClientComponent implements OnInit {
   cancel(){
     this.dialogRef.close()
   }
-  onSubmit(){
-    
-  }
+
 
 }

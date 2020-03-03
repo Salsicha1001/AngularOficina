@@ -5,6 +5,7 @@
             <mat-menu #menu="matMenu">
                 <button mat-menu-item routerLink="/registerclient">Cliente</button>
                 <button mat-menu-item routerLink="/cadastropeca">Peça</button>
+                <button mat-menu-item routerLink="/registerfunc">Funcionario</button>
                 
                 
             </mat-menu>
@@ -16,6 +17,14 @@
                 
                 
             </mat-menu>
+             <button mat-button [matMenuTriggerFor]="os">Ordem de Serviço</button>
+            <mat-menu #os="matMenu">
+                <button mat-menu-item routerLink="/addos">Criar OS</button>
+               
+                
+                
+            </mat-menu>
+            
   
     </mat-toolbar>
         <router-outlet></router-outlet>

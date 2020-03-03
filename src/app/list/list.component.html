@@ -12,16 +12,23 @@
     <td>Email</td>
     <td>Data de Nascimento</td>
     <td>Telefone</td>
-    <td><mat-icon>directions_car</mat-icon></td>
+    <td>CEP</td>
+  
   
     <td><mat-icon>create</mat-icon></td>
   
   </tr>
-  <tbody >
-   <tr>
-  
+  <tbody *ngIf="simpleRqClient$ |async as clients">
+    <tr *ngFor="let c of clients" >
+      <td><mat-icon>account_circle</mat-icon></td>
+      <td>{{c.id}}</td>
+      <td>{{c.NAME}}</td>
+      <td>{{c.CPF}}</td>
+      <td>{{c.EMAIL}}</td>
+      <td>{{c.DATE}}</td>
+      <td>{{c.TELL}}</td>
+      <td>{{c.CEP}}</td>
 
-    <td><button mat-mini-fab color='primary' (click)="addCar(c)"><mat-icon>add_circle_outline</mat-icon></button></td>
     <td><button mat-mini-fab color="primary" (click)="editClient(c)"><mat-icon>create</mat-icon></button></td>
     
   </tr>
@@ -40,12 +47,6 @@
     <button mat-button (click)="cancel()">Cancelar</button>
     <button mat-button [mat-dialog-close]="client" cdkFocusInitial>Salvar</button>
 </div>-->
-
-
-
-
-
-
 
   
 </div>

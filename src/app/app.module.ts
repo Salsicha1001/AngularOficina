@@ -52,7 +52,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { EditClientComponent } from './edit-client/edit-client.component';
 import { AddEstoqueComponent } from './add-estoque/add-estoque.component';
-import { CepComponent } from './EdCep/cep.component'; 
+import { CepComponent } from './EdCep/cep.component';
+import { AddOsComponent } from './add-os/add-os.component';
+import { AddFunComponent } from './add-fun/add-fun.component'; 
 
 @NgModule({
   declarations: [
@@ -62,7 +64,9 @@ import { CepComponent } from './EdCep/cep.component';
     ListComponent,
     EditClientComponent,
     AddEstoqueComponent,
-    CepComponent
+    CepComponent,
+    AddOsComponent,
+    AddFunComponent
   ],
   imports: [
     HttpClientModule,

@@ -1,0 +1,17 @@
+mat-form-field{
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.snack_ok{
+    background: darkseagreen;
+    color: black;
+}
+.snack_error{
+    background:red;
+    color: black;
+}
+
+.field-error{
+    color: red;
+}

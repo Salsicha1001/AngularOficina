@@ -2,7 +2,7 @@ import { CEPService } from './../Services/cep.service';
 import { Cep } from './../EdCep/cep.model';
 
 
-import { Observable } from 'rxjs';
+import { Observable, config } from 'rxjs';
 import { ClientDataSource } from './../list/list.component';
 import { DataSource } from '@angular/cdk/collections';
 import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
@@ -52,10 +52,10 @@ export const MY_FORMATS = {
 })
 export class RegisterClientComponent implements OnInit {
   cep :Cep={
-    cep:'',cidade:'',bairro:'', complemento:'', estado:'',logradouro:'',numero:''
+    cep:'',cidade:'',bairro:'', complemento:'', estado:'',logradouro:'',numero:null
   } 
   cliente:Client={
-    Name:'', Cpf:null,Dates:new Date(),Tell:null,Email:'',people:'', CEP:{}
+    NAME:'', CPF:null,DATE:new Date(),TELL:null,EMAIL:'',PEOPLE:'', CEP:{}
   }
 
  
@@ -79,9 +79,9 @@ export class RegisterClientComponent implements OnInit {
   }
  
   addEvent($event){
-    this.day = this.cliente.Dates._i.date
-    this.month = this.cliente.Dates._i.month+1
-    this.year = this.cliente.Dates._i.year
+    this.day = this.cliente.DATE._i.date
+    this.month = this.cliente.DATE._i.month+1
+    this.year = this.cliente.DATE._i.year
     this.finaly = this.day+"/"+this.month+"/"+this.year
   console.log(this.finaly)
   //
@@ -123,23 +123,18 @@ export class RegisterClientComponent implements OnInit {
 
 
 onSubmit(){
-  this.cliente.Dates = this.finaly
+  this.cliente.DATE = this.finaly
   this.cliente.CEP = this.cepService.emmitCep
-  //console.log(this.cliente)
+
+  console.log(this.cliente)
   //console.log(this.cepService.emmitCep)
 
-    /*
+    
 
-    this.clientsService.save(this.car).subscribe((v:Veiculo)=>{
+    this.clientsService.save(this.cliente).subscribe((v:Client)=>{
 
-      this.newCar.push(v)
-      this.cliente.Name=""
-      this.cliente.Tell= null
-      this.cliente.Cpf = null
-      this.cliente.Dates=""
-      this.cliente.Email=""
-     
-  
+      this.newClient.push(v)
+    
      },
      (err)=>{
        console.error(err)
@@ -153,7 +148,7 @@ onSubmit(){
    
    
    
-    */}
+    }
 }
 export class ClientData extends DataSource<any>{
   constructor(private clientsService:ClientsService){ 
