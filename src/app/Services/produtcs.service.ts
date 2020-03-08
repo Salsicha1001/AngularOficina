@@ -7,7 +7,7 @@ import { Peca } from '../add-estoque/produto.model';
   providedIn: 'root'
 })
 export class ProdutcsService {
-  readonly url: string = 'http://localhost:3000/'
+  readonly url: string = 'http://localhost:3000'
   readonly url1: string = 'http://localhost:3000/getproducts'
   private ProdSub$ : BehaviorSubject<Peca[]> = new BehaviorSubject<Peca[]>(null)
   private loaded : boolean= false;

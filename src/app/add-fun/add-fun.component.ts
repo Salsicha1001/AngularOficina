@@ -72,7 +72,12 @@ export class AddFunComponent implements OnInit {
     this.funci.CEP = this.cepService.emmitCep
       this.funService.save(this.funci).subscribe((f:FUNCIO)=>{
         this.newFun.push(f)
-        alert('Salvo com sucesso')
+        this.snackBar.open('Salvo com sucesso','X',{
+          duration:2000,
+          verticalPosition:'top',
+          panelClass:['snack_ok'],
+    
+        })
       },
       
      (err)=>{

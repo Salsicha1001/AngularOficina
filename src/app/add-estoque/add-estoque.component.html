@@ -15,12 +15,6 @@ margin-top: 2px;">
                     <input matInput placeholder="" [(ngModel)]="peca.marca" name="marca" #nameField="ngModel" required> 
                         <mat-hint>Preencha com o marca da peça</mat-hint>
                             <mat-error *ngIf="nameField.invalid && nameField.touched">Digite a Marca</mat-error>
-            </mat-form-field>   
-            <mat-form-field appearance="legacy">
-                <mat-label>Marca da Peça</mat-label>
-                    <input matInput placeholder="" [(ngModel)]="peca.marca" name="marca" #nameField="ngModel" required> 
-                        <mat-hint>Preencha com o marca da peça</mat-hint>
-                            <mat-error *ngIf="nameField.invalid && nameField.touched">Digite a Marca</mat-error>
             </mat-form-field>
             
             <mat-form-field appearance="legacy">
@@ -46,11 +40,8 @@ margin-top: 2px;">
               <button mat-button color="primary" [disabled]="!formPeca.valid "><mat-icon>done</mat-icon></button>
               <button mat-button type="reset" color="warn"><mat-icon>delete</mat-icon></button>
     </form>
-</mat-card>
-<mat-card style=" border: 1px solid;
-padding: 10px;
-box-shadow: 5px 10px 8px 10px #888888;
-margin-top: 2px;">
+<br>
+
 <mat-form-field>
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium">

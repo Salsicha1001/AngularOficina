@@ -1,4 +1,5 @@
 export class OrdemService{
+    id?:any
     CLIENTE:string
     PLACA:string
     MODELO:string
@@ -8,5 +9,6 @@ export class OrdemService{
     DATEP:any
     DATEI:any
     OBS:string
-    idClient?:any
+    IDCLIENT?:any
+    IDFUNCIONARIO?:any
 }

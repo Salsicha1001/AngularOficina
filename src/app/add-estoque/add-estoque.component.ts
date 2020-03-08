@@ -37,6 +37,12 @@ export class AddEstoqueComponent implements OnInit {
       this.peca.price=""
       this.peca.qtd=null
       this.peca.codBarras=null
+      this.snackBar.open('Salvo com sucesso','X',{
+        duration:2000,
+        verticalPosition:'top',
+        panelClass:['snack_ok'],
+  
+      })
     },
     
     (err)=>{

@@ -5,7 +5,7 @@
     margin-top: 2px;">
  
  <h2>Cadastro de Clientes:</h2>
-<form (ngSubmit)="onSubmit()" #formClient="ngForm" #formCar ="ngForm" >
+<form (ngSubmit)="onSubmit()" #formClient="ngForm" >
   
 <mat-form-field appearance="legacy">
     <mat-label>Nome</mat-label>
@@ -45,40 +45,9 @@
     <mat-radio-button value="Fisica">Pessoa Fisica</mat-radio-button>
   </mat-radio-group>
   <br>
-<!--
 
- <h3>Cadastro do Veiculo:</h3>
- <mat-form-field appearance="legacy">
-  <mat-label>Modelo</mat-label>
-  <input matInput placeholder="" [(ngModel)]="car.Modelo" name="modelo" required>
-  <mat-hint>Modelo do carro</mat-hint>
-</mat-form-field>
-<mat-form-field appearance="legacy">
-  <mat-label>Marca</mat-label>
-  <input matInput placeholder="" [(ngModel)]="car.Marca" name="marca" required>
-  <mat-hint>Marca do carro</mat-hint>
-</mat-form-field>
-<mat-form-field appearance="legacy">
-  <mat-label>Ano</mat-label>
-  <input matInput placeholder="" [(ngModel)]="car.Ano"  name="ano" required> 
-  <mat-hint>Ano do carro</mat-hint>
-</mat-form-field>
-<br>
-<mat-form-field appearance="legacy">
-  <mat-label>Cor</mat-label>
-  <input matInput placeholder="" [(ngModel)]="car.Cor" name="cor" required>
-  <mat-hint>Cor do carro</mat-hint>
-</mat-form-field>
-<mat-form-field appearance="legacy">
-  <mat-label>Placa</mat-label>
-  <input matInput placeholder="" [(ngModel)]="car.Placa" name="placa" required>
-  <mat-hint>placa do carro</mat-hint>
-</mat-form-field>
-<mat-form-field appearance="legacy">
-  <mat-label>KM</mat-label>
-  <input matInput placeholder="" [(ngModel)]="car.KM" name="km">
-  <mat-hint>KM do carro</mat-hint>
-</mat-form-field>-->
+
+
 <app-cep></app-cep>
 
 <mat-form-field appearance="legacy" >
@@ -91,7 +60,7 @@
       <input matInput placeholder="100" name="com" [(ngModel)]="cliente.CEP.complemento"> 
       <mat-hint>Complemento da casa</mat-hint>
       </mat-form-field>
- <button mat-raised-button color="primary"style="margin-left:5%" [disabled]="!formClient.valid && !formCar.valid" >Salvar</button>
+ <button mat-raised-button color="primary"style="margin-left:5%" [disabled]="!formClient.valid " >Salvar</button>
 <button mat-raised-button type="reset" color=""style="margin-left:5px; background-color:yellow;">Limpar</button>
 </form>
 
