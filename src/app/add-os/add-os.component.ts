@@ -81,7 +81,7 @@ export class AddOsComponent implements OnInit {
       this.simpleRqClient$.subscribe((c)=>{
         //console.log(c)
         for(let key in c){
-          // console.log(c[key].NAME)
+        
           this.options[key] = c[key].id +" "+c[key].NAME 
         }
       //  console.log(this.options)
@@ -91,7 +91,7 @@ export class AddOsComponent implements OnInit {
         for(let key in f){
           this.nameFuncio[key] =f[key].id+' '+ f[key].NOME
         }
-      //  console.log(this.nameFuncio)
+    
       })
 
 
@@ -141,5 +141,6 @@ export class AddOsComponent implements OnInit {
   
 }
 
+//pensando na vida noturna
 }
 
