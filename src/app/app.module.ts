@@ -54,7 +54,8 @@ import { EditClientComponent } from './edit-client/edit-client.component';
 import { AddEstoqueComponent } from './add-estoque/add-estoque.component';
 import { CepComponent } from './EdCep/cep.component';
 import { AddOsComponent } from './add-os/add-os.component';
-import { AddFunComponent } from './add-fun/add-fun.component'; 
+import { AddFunComponent } from './add-fun/add-fun.component';
+import { ListOsComponent } from './list-os/list-os.component'; 
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { AddFunComponent } from './add-fun/add-fun.component';
     AddEstoqueComponent,
     CepComponent,
     AddOsComponent,
-    AddFunComponent
+    AddFunComponent,
+    ListOsComponent
   ],
   imports: [
     HttpClientModule,

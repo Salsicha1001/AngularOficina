@@ -1,3 +1,4 @@
+import { ListOsComponent } from './list-os/list-os.component';
 import { AddFunComponent } from './add-fun/add-fun.component';
 import { AddEstoqueComponent } from './add-estoque/add-estoque.component';
 import { ListComponent } from './list/list.component';
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path:'list', component:ListComponent},
   {path:'cadastropeca', component:AddEstoqueComponent},
   {path:'addos', component:AddOsComponent},
-  {path:'registerfunc', component:AddFunComponent}
+  {path:'registerfunc', component:AddFunComponent},
+  {path:'listos', component:ListOsComponent}
 ];
 
 @NgModule({
