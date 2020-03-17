@@ -1,3 +1,4 @@
+import { OsServiceService } from './../Services/os-service.service';
 import { OrdemService } from './OrdemS.model';
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
 import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
@@ -63,12 +64,13 @@ export class AddOsComponent implements OnInit {
   finaly:string
   dates = Date.now()
   
+  newOS:OrdemService[]=[]
   options:string[]= []
   nameFuncio:string[]=[]
   teste:any[]=[]
   idClient:any
 
-  constructor(private clientService:ClientsService, private funcionarioService:FuncionarioService,  private snackBar: MatSnackBar) { }
+  constructor(private clientService:ClientsService, private funcionarioService:FuncionarioService,  private snackBar: MatSnackBar, private osService: OsServiceService) { }
 
   ngOnInit() {
     this.simpleRqClient$= this.clientService.get()
@@ -93,6 +95,7 @@ export class AddOsComponent implements OnInit {
         }
     
       })
+
 
 
   }
@@ -130,7 +133,6 @@ export class AddOsComponent implements OnInit {
 
    this.os.IDCLIENT =this.myControl.value.charAt(0)
    this.os.IDFUNCIONARIO 
-  
    console.log(this.os)
     this.snackBar.open('Salvo com sucesso','X',{
       duration:2000,
@@ -138,6 +140,10 @@ export class AddOsComponent implements OnInit {
       panelClass:['snack_ok'],
     
     })
+   this.osService.save(this.os).subscribe((p:OrdemService)=>{
+    this.newOS.push(p)
+  
+  })
   
 }
 

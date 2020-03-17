@@ -10,6 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListOsComponent implements OnInit {
     simpleRqos$ :Observable<OrdemService[]>
+    os:OrdemService = {
+      CLIENTE:'',PLACA:'',MODELO:'',MARCA:'',ANO:null,FUNCIONARIO:'',DATEP:'',DATEI:'',OBS:'',IDCLIENT:'',IDFUNCIONARIO:''
+    }
+  
   constructor(private osService:OsServiceService) { }
 
   ngOnInit() {

@@ -10,14 +10,16 @@
             <th>Data de entrega</th>
             <th>Opção</th>
           </tr>
-        <tbody>         
+        <tbody *ngIf="simpleRqos$ |async as os" >
+        <tr *ngFor="let o of os">  
+            <td>{{o.id}}</td>
+            <td>{{o.PLACA}}</td>
+            <td>{{o.CLIENTE}}</td>
+            <td>{{o.MODELO}}</td>
+            <td>{{o.FUNCIONARIO}}</td>
+            <td>{{o.DATEP}}</td>
             <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+        </tr>  
         </tbody> 
     </table>
 </mat-card>
