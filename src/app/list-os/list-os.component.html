@@ -1,5 +1,5 @@
 <mat-card>
-    <h3>Ordem de serviço</h3>
+    <h3>Ordem de serviço:</h3>
     <table>
         <tr>
             <th>Os</th>
@@ -18,7 +18,7 @@
             <td>{{o.MODELO}}</td>
             <td>{{o.FUNCIONARIO}}</td>
             <td>{{o.DATEP}}</td>
-            <td></td>
+            <td><button mat-mini-fab color="primary" routerLink="/EditOS"(click)="getos(o)"><mat-icon>build</mat-icon> </button></td>
         </tr>  
         </tbody> 
     </table>

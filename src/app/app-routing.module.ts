@@ -1,3 +1,4 @@
+import { EditOsComponent } from './edit-os/edit-os.component';
 import { AddServicoComponent } from './add-servico/add-servico.component';
 import { ListOsComponent } from './list-os/list-os.component';
 import { AddFunComponent } from './add-fun/add-fun.component';
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path:'addos', component:AddOsComponent},
   {path:'registerfunc', component:AddFunComponent},
   {path:'listos', component:ListOsComponent},
-  {path:'registerserv', component:AddServicoComponent}
+  {path:'registerserv', component:AddServicoComponent},
+  {path:'EditOS/:id', component:EditOsComponent}
 ];
 
 

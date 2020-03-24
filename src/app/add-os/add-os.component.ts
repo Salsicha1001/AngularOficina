@@ -140,9 +140,10 @@ export class AddOsComponent implements OnInit {
       panelClass:['snack_ok'],
     
     })
+    
    this.osService.save(this.os).subscribe((p:OrdemService)=>{
     this.newOS.push(p)
-  
+  ///
   })
   
 }

@@ -7,9 +7,11 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class OsServiceService {
+  private os :OrdemService
   readonly url: string = 'http://localhost:3000'
   readonly url1: string = 'http://localhost:3000/listosall'
   private OSSub$ : BehaviorSubject<OrdemService[]> = new BehaviorSubject<OrdemService[]>(null)
+  private OSSub1$ : Observable<OrdemService>
   private loaded : boolean= false;
    a= {}
   
@@ -17,15 +19,22 @@ export class OsServiceService {
 
 
   get(): Observable<OrdemService[]> {
-    if(!this.loaded){
+
       this.http.get<OrdemService[]>(this.url1)
       .subscribe(this.OSSub$)
       this.a = [this.OSSub$.asObservable]
-      this.loaded = true
-    }
+
+    
 
   return this.OSSub$.asObservable()
 }
+  getid(i):Observable<OrdemService>{
+    
+  return this.http.get<OrdemService>(`${this.url}/listos/`+i)
+ 
+    
+  }
+
 
 
   save(v:OrdemService): Observable<OrdemService>{

@@ -71,14 +71,3 @@ export class ClientDataSource extends DataSource<any>{
 
      }
 }
-//export class CarDataSource extends DataSource<any>{
-  //constructor(private carService:CarService){ 
- //  super();
-//}
-
-   // connect():Observable<Veiculo[]>{
-    //  return this.carService.get()
-    //}
-   // disconnect(){
-   // }
-//}
