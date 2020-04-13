@@ -1,0 +1,30 @@
+
+<mat-tab-group >
+  <mat-tab label="Peça em estoque">
+<table > 
+    <tr>
+  
+        <td>Nome</td>
+        <td>Adicionar</td>
+   
+      </tr>
+      <tbody *ngIf="simpleRqProd$ |async as Peca">
+          <tr *ngFor="let c of Peca">
+              <td>{{c.NOME}}</td>
+              <td><button mat-mini-fab color="primary" (click)="adc(c)"><mat-icon>add</mat-icon></button></td>
+       
+      </tr>
+  
+      </tbody>
+       
+    </table>
+   
+    <div *ngFor="let c of obj">
+      {{c.NOME}}
+    </div>
+    <button mat-mini-fab color="primary" id="saves" [mat-dialog-close]="obj" cdkFocusInitial><mat-icon>done</mat-icon></button>
+  </mat-tab>
+  <mat-tab label="Peça Digitada">
+    
+  </mat-tab>
+</mat-tab-group>

@@ -57,7 +57,8 @@ import { AddOsComponent } from './add-os/add-os.component';
 import { AddFunComponent } from './add-fun/add-fun.component';
 import { ListOsComponent } from './list-os/list-os.component';
 import { AddServicoComponent } from './add-servico/add-servico.component';
-import { EditOsComponent } from './edit-os/edit-os.component'; 
+import { EditOsComponent } from './edit-os/edit-os.component';
+import { AdcPecasComponent } from './adc-pecas/adc-pecas.component'; 
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { EditOsComponent } from './edit-os/edit-os.component';
     AddFunComponent,
     ListOsComponent,
     AddServicoComponent,
-    EditOsComponent
+    EditOsComponent,
+    AdcPecasComponent
   ],
   imports: [
     HttpClientModule,

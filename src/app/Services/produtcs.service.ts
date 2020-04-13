@@ -15,15 +15,12 @@ export class ProdutcsService {
   constructor(private http: HttpClient) { }
 
 
-
+//Solucão
   get(): Observable<Peca[]> {
-    if(!this.loaded){
-      this.http.get<Peca[]>(this.url1)
-      .subscribe(this.ProdSub$)
-      this.loaded = true
-    }
+  
+    return  this.http.get<Peca[]>(this.url1)
+ 
 
-  return this.ProdSub$.asObservable()
 }
 
   save(p:Peca): Observable<Peca>{
@@ -33,3 +30,4 @@ export class ProdutcsService {
     return this.http.get<Peca[]>(`${this.url1}/getproducts`)
   }
 }
+
