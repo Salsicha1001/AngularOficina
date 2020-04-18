@@ -15,7 +15,7 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 export class AddEstoqueComponent implements OnInit {
   simpleRqProd$ :Observable<Peca[]>
  peca:Peca={
-   name:'',codBarras:null,marca:'',price:'',qtd:null,Empresa:'',data:new Date()
+   name:'',codBarras:null,marca:'',price:null,qtd:null,Empresa:'',data:new Date()
  }
  newProduct:Peca[]=[]
   dataSource: any;
@@ -34,7 +34,7 @@ export class AddEstoqueComponent implements OnInit {
       this.newProduct.push(p)
       this.peca.name=""
       this.peca.marca=""
-      this.peca.price=""
+      this.peca.price= null
       this.peca.qtd=null
       this.peca.codBarras=null
       this.snackBar.open('Salvo com sucesso','X',{

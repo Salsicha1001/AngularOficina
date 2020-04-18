@@ -27,7 +27,7 @@ interface status {
 
 export class EditOsComponent implements OnInit {
 
-    obj=[{}]
+   
 
   id;
 stt:status[]=[
@@ -35,11 +35,15 @@ stt:status[]=[
   {name:'Espera'},
   {name:'Negado'}
 ]
-
-cart:Cart={
-  item:[{totalPrice:null,totalQtd:null}]
+peca:Peca={
+  name:'',codBarras:null,marca:'',price:null,qtd:null,Empresa:'',data:new Date()
 }
-newCart:Cart[]=[]
+cart:Cart={
+
+  item:[{}],totalPrice:null,totalQtd:null
+} 
+
+ newCart:Cart[]=[]
 
 simpleRqProd$ :Observable<Peca[]>
   des:Subscription;
@@ -68,25 +72,87 @@ console.log(this.id)
 
   add(){
    
+    let list:Cart={
+
+      item:[{}],totalPrice:null,totalQtd:1
+    } 
     const dialogRef = this.dialog.open(AdcPecasComponent, {
       width: '600px',
       data: []
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed' + result);
+      console.log('The dialog was closed' );
       for(let key in result){
-        
-        this.obj[key] = result[key]
-       // console.log(this.obj[key])
-      
-        this.cart.item[key]=result[key] 
-       Array.prototype.push.apply(this.cart,this.cart.item)
-  
+        list.totalPrice = result[key].PRICE
       }
-      console.log(this.cart)
+      console.log(result)
+     list.item=result
+   
+     this.newCart.push(list)
+
+      console.log(this.newCart)
     });
   }
+  
+
+
+
+
+  addqtd(i){
+ for(let key in this.newCart){
+   if(this.newCart[key] == i){
+     //console.log(this.newCart[key].item)
+     var tt = this.newCart[key].item
+      for(let a in tt){
+     //   console.log(tt[a].PRICE)
+     var v = tt[a].PRICE
+      }
+   }
+ }
+    for(let key in this.newCart){
+      if(this.newCart[key]== i){
+        this.newCart[key].totalQtd++
+       this.newCart[key].totalPrice =v *this.newCart[key].totalQtd
+      }
+    }
+  }
+
+
+
+  removeqtd(i){
+    for(let key in this.newCart){
+      if(this.newCart[key] == i){
+        //console.log(this.newCart[key].item)
+        var tt = this.newCart[key].item
+         for(let a in tt){
+        //   console.log(tt[a].PRICE)
+        var v = tt[a].PRICE
+         }
+      }
+    }
+    for(let key in this.newCart){
+      if(this.newCart[key]== i){
+      
+        if(this.newCart[key].totalQtd>1){
+        this.newCart[key].totalQtd--
+        this.newCart[key].totalPrice -=v
+        }else{
+         var a = this.newCart[key]
+        var b=  this.newCart.indexOf(a)
+          this.newCart.splice(b,1)
+        }
+      }
+    }
+  }
+
+
+
+
+
+
+
+
   ngOnDestroy(): void {
     //Called once, before the instance is destroyed.
     //Add 'implements OnDestroy' to the class.

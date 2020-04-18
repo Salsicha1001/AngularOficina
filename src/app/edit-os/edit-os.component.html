@@ -28,16 +28,23 @@
         <button mat-mini-fab color="primary"style="margin-rigth:-5%;margin-left:3%;" (click)="add()"><mat-icon>add</mat-icon></button>
    
 
-<mat-card>
+<mat-card *ngIf="newCart.length >0">
   <table> 
-   
-    <tbody>
-        <tr *ngFor="let c of obj">
-            <td>{{c.NOME}}</td>
-            <td><button mat-mini-fab color="primary"><mat-icon>add</mat-icon></button></td>
-        
-      
-    </tr>
+   <tr>
+     <td>Nome</td>
+     <td>Adicionar</td>
+     <td>Quantidade</td>
+     <td>Remover</td>
+     <td>Valor</td>
+   </tr>
+    <tbody *ngFor="let c of newCart">
+    <tr *ngFor="let d of c['item']">
+      <td>{{d.NOME}}</td>
+     <td><button mat-mini-fab color="primary" (click)="addqtd(c)"><mat-icon>add</mat-icon></button></td>
+        <td>{{c.totalQtd}}</td>
+        <td><button mat-mini-fab color="accent" (click)="removeqtd(c)"><mat-icon>remove</mat-icon></button></td>
+      <td>R${{c.totalPrice}}</td>    
+      </tr>
     </tbody>
   </table>
 

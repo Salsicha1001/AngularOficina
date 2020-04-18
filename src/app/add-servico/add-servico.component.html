@@ -1,1 +1,100 @@
-<p>add-servico works!</p>
+<mat-card style=" border: 1px solid;
+padding: 10px;
+box-shadow: 5px 10px 8px 10px #888888;
+margin-top: 2px;">
+    <mat-card-title>Cadastro de Serviço:</mat-card-title>
+    <form (ngSubmit)="onSubmit()" #formServico="ngForm" >
+        <mat-form-field appearance="legacy">
+            <mat-label>Descrição</mat-label>
+            <input matInput placeholder="" [(ngModel)]="serv.descricao" name="name" #nameField="ngModel" required> 
+            <mat-hint>Preencha com o nome do serviço</mat-hint>
+            <mat-error *ngIf="nameField.invalid && nameField.touched">Digite um nome valido</mat-error>
+            </mat-form-field> 
+            <mat-form-field appearance="legacy">
+                <mat-label>Valor</mat-label>
+                    <input matInput placeholder="" type="number"[(ngModel)]="serv.valor" name="valor" #nameField="ngModel" required> 
+                        <mat-hint>Preencha com o valor</mat-hint>
+                            <mat-error *ngIf="nameField.invalid && nameField.touched">Digite o valor</mat-error>
+            </mat-form-field>
+            
+            <mat-form-field appearance="legacy">
+                <mat-label>Lucro</mat-label>
+                    <input matInput placeholder="" type="number" [(ngModel)]="serv.lucro" name="lucro" #lucroField="ngModel"  required> 
+                        <mat-hint>Preencha o valor da porcentagem de lucro</mat-hint>
+                        <span matSuffix>%</span>
+                            <mat-error *ngIf="lucroField.invalid && lucroField.touched">Digite o Codigo</mat-error>
+            </mat-form-field>
+
+
+         
+              <button mat-button color="primary"  [disabled]="!formServico.valid "><mat-icon>done</mat-icon></button>
+              <button mat-button type="reset" color="warn"><mat-icon>delete</mat-icon></button>
+    </form>
+<br>
+
+<div class="example-container mat-elevation-z8">  
+    <mat-table #Table [dataSource]="MyDataSource">  
+
+        <!-- For ID -->  
+        <ng-container matColumnDef="descricao">  
+            <mat-header-cell *matHeaderCellDef> Descrição </mat-header-cell>  
+            <mat-cell *matCellDef="let c"> {{c.DESCRICAO}} </mat-cell>  
+        </ng-container>  
+         
+        <ng-container matColumnDef="valor">  
+            <mat-header-cell *matHeaderCellDef> Valor Total </mat-header-cell>  
+            <mat-cell *matCellDef="let c"> R${{c.VALOR}} </mat-cell>  
+        </ng-container> 
+        <ng-container matColumnDef="lucro">  
+            <mat-header-cell *matHeaderCellDef> Lucro </mat-header-cell>  
+            <mat-cell *matCellDef="let c"> {{c.LUCRO}}% </mat-cell>  
+        </ng-container> 
+        <ng-container matColumnDef="ganhodono">  
+            <mat-header-cell *matHeaderCellDef> Valor Ganho </mat-header-cell>  
+            <mat-cell *matCellDef="let c"> R${{c.GANHODONO}} </mat-cell>  
+        </ng-container>  
+        <ng-container matColumnDef="ganhoFuncionario">  
+            <mat-header-cell *matHeaderCellDef> Funciorio Recebe </mat-header-cell>  
+            <mat-cell *matCellDef="let c"> R${{c.GANHOFUN}} </mat-cell>  
+        </ng-container>
+        <ng-container matColumnDef="delete" >  
+            <mat-header-cell *matHeaderCellDef style="margin-left: 2%;"> Deletar</mat-header-cell>  
+            <mat-cell *matCellDef="let c"><button mat-button  color="warn" (click)="delet(c)"><mat-icon>delete</mat-icon></button> </mat-cell>  
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>  
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>  
+    </mat-table>  
+
+    <!-- To use pagination in DataTable  -->  
+
+    <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">  
+    </mat-paginator>  
+</div>  
+
+<!--
+   <table > 
+    <tr>
+      
+      <td>Descrição</td>
+      <td>Ganho Total</td>
+      <td>Lucro</td>
+      <td>Valor do funcionario</td>
+      <td>Ganhos</td>
+      <td>Deletar</td>
+         
+    </tr>
+    <tbody *ngIf="MyDataSource">
+        <tr *ngFor="let c of MyDataSource['data']">
+           
+            <td>{{c.DESCRICAO}}</td>
+            <td>R$ {{c.VALOR}}</td>
+            <td>{{c.LUCRO}}%</td>
+            <td>R${{c.GANHOFUN}}</td>
+            <td>R$ {{c.GANHODONO}}</td>
+      <td><button mat-button  color="warn" (click)="delet(c)"><mat-icon>delete</mat-icon></button></td>
+    </tr>
+    </tbody>
+  </table>
+  <mat-paginator  #paginator [pageSize]="5" [pageSizeOptions]="[5]"></mat-paginator>
+-->
+</mat-card>

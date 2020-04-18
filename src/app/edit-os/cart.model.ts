@@ -1,6 +1,6 @@
 export interface Cart{
     id?:number,
-    item:[{totalQtd:number,
-        totalPrice:number} ],
-    
+    item:[{PRICE?:number}],
+    totalQtd:number,
+    totalPrice:number
 }

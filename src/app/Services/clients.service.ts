@@ -21,14 +21,14 @@ export class ClientsService {
   constructor(private http: HttpClient) { }
 
   get(): Observable<Client[]> {
-    if(!this.loaded){
-      this.http.get<Client[]>(this.url1)
-      .subscribe(this.ClientSub$)
-      this.a = [this.ClientSub$.asObservable]
-      this.loaded = true
-    }
+    this.a = [this.ClientSub$.asObservable]
+    return this.http.get<Client[]>(this.url1)
 
-  return this.ClientSub$.asObservable()
+      
+    
+    
+
+
 }
 
  

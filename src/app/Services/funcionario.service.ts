@@ -19,14 +19,12 @@ export class FuncionarioService {
       }
 
       get(): Observable<FUNCIO[]> {
-        if(!this.loaded){
-          this.http.get<FUNCIO[]>(`${this.url}/listfun`)
-          .subscribe(this.Fun$)
-      
-          this.loaded = true
-        }
+       
+        return  this.http.get<FUNCIO[]>(`${this.url}/listfun`)
+       
+     
     
-      return this.Fun$.asObservable()
+ 
     }
 
     

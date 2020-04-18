@@ -18,32 +18,28 @@ export class AdcPecasComponent implements OnInit {
   simpleRqProd$ : Observable<Peca[]>
 
  obj=[{}]
-
+  
 
 adc(i){
-  var a = false
-  for(let key in this.obj){
-      if(this.obj[key] == i){
-        console.log(this.obj[key])
-        a = true
+  var b = false
+     if(this.obj.length!=0){
+        b =true
       }
-  }if(a== false){
- this.obj.push(i)
-  }else{
-    alert("Ja foi adicionado esse produto")
-  }
+      if(b == false){
+         this.obj.push(i)
+        }else{
+          alert("Selecione um item por vez")
+      }
 
 }
  
-save(){
 
-}
   constructor(private produtcService: ProdutcsService, private route: ActivatedRoute ,
     public dialogRef: MatDialogRef<EditOsComponent>,
     @Inject(MAT_DIALOG_DATA) public p:[]
   ) {  this.obj = p 
     this.simpleRqProd$ =  this.produtcService.get()
-    console.log(this.simpleRqProd$)
+
      
  }
 

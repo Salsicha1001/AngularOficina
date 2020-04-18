@@ -19,14 +19,9 @@ export class OsServiceService {
 
 
   get(): Observable<OrdemService[]> {
-
-      this.http.get<OrdemService[]>(this.url1)
-      .subscribe(this.OSSub$)
-      this.a = [this.OSSub$.asObservable]
-
-    
-
-  return this.OSSub$.asObservable()
+    this.a = [this.OSSub$.asObservable]
+    return   this.http.get<OrdemService[]>(this.url1)
+  
 }
   getid(i):Observable<OrdemService>{
     

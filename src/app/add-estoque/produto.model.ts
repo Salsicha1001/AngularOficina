@@ -5,6 +5,6 @@ export interface Peca{
     codBarras:number;
     name:string;
     qtd:number;
-    price:string;
+    price:number;
     marca:string;
 }
