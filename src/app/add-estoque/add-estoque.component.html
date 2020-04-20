@@ -24,6 +24,13 @@ margin-top: 2px;">
                             <mat-error *ngIf="barraField.invalid && (barraField.touched || barraField.dirty)">Digite o Codigo</mat-error>
             </mat-form-field>
             <mat-form-field appearance="legacy">
+                <mat-label>Fornecedor</mat-label>
+                    <input matInput placeholder=""  [(ngModel)]="peca.Empresa" name="empresa" #EmpresaField="ngModel"  required> 
+                        <mat-hint>Preencha com Fornecedor</mat-hint>
+                            <mat-error *ngIf="EmpresaField.invalid && (EmpresaField.touched)">Digite o fornecedor</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="legacy">
                 <mat-label>Quantidade</mat-label>
                     <input matInput placeholder="" type="number" [(ngModel)]="peca.qtd" name="qtd" #qtdField="ngModel"  required> 
                         <mat-hint>Quantidade do produto</mat-hint>
@@ -33,15 +40,89 @@ margin-top: 2px;">
             
             <mat-form-field appearance="legacy">
                 <mat-label>Preço Unitario</mat-label>
-                <input matInput type="number" [(ngModel)]="peca.price" name="price" #priceField="ngModel">
+                <input matInput type="number" [(ngModel)]="peca.precoDeCompra" name="price" #priceField="ngModel">
                 <span matPrefix>$&nbsp;</span>
                 <mat-error *ngIf="priceField.invalid && (priceField.touched)">Digite o preço</mat-error>
               </mat-form-field>
+
+              <mat-form-field appearance="legacy">
+                <mat-label>Lucro</mat-label>
+                <input matInput type="number" [(ngModel)]="peca.lucro" name="price" #priceField="ngModel">
+                <span matSuffix>%</span>
+                <mat-error *ngIf="priceField.invalid && (priceField.touched)">Digite o lucro</mat-error>
+              </mat-form-field> 
+
               <button mat-button color="primary" [disabled]="!formPeca.valid "><mat-icon>done</mat-icon></button>
               <button mat-button type="reset" color="warn"><mat-icon>delete</mat-icon></button>
     </form>
 <br>
 
+
+<div  >  
+    <mat-table #Table [dataSource]="DataTable">  
+
+       
+        <ng-container matColumnDef="name">  
+            <mat-header-cell *matHeaderCellDef sticky> Nome  </mat-header-cell>  
+            <mat-cell *matCellDef="let c"> {{c.NOME}} </mat-cell>  
+        </ng-container>  
+        <ng-container matColumnDef="marca">  
+            <mat-header-cell *matHeaderCellDef> Marca  </mat-header-cell>  
+            <mat-cell *matCellDef="let c"> {{c.MARCA}} </mat-cell>  
+        </ng-container>  
+        <ng-container matColumnDef="Empresa">  
+            <mat-header-cell *matHeaderCellDef> Fornecedor  </mat-header-cell>  
+            <mat-cell *matCellDef="let c"> {{c.EMPRESA}} </mat-cell>  
+        </ng-container>  
+        <ng-container matColumnDef="codBarras">  
+            <mat-header-cell *matHeaderCellDef>Codigo de Barras </mat-header-cell>  
+            <mat-cell *matCellDef="let c"> {{c.COD_BARRA}} </mat-cell>  
+        </ng-container> 
+        <ng-container matColumnDef="precoDeCompra">  
+            <mat-header-cell *matHeaderCellDef> Preço da Compra Uni  </mat-header-cell>  
+            <mat-cell *matCellDef="let c"> R${{c.PRECODECOMPRA | number : '.2'}} </mat-cell>  
+        </ng-container>  
+        <ng-container matColumnDef="lucro">  
+            <mat-header-cell *matHeaderCellDef> Lucro </mat-header-cell>  
+            <mat-cell *matCellDef="let c"> {{c.LUCRO}}% </mat-cell>  
+        </ng-container> 
+        <ng-container matColumnDef="qtd">  
+            <mat-header-cell *matHeaderCellDef> Quantidade </mat-header-cell>  
+            <mat-cell *matCellDef="let c"> R${{c.QTD}} </mat-cell>  
+        </ng-container>  
+        <ng-container matColumnDef="precoDeVenda">  
+            <mat-header-cell *matHeaderCellDef> Valor da Venda </mat-header-cell>  
+            <mat-cell *matCellDef="let c"> R${{c.PRECODEVENDA | number : '.2'}} </mat-cell>  
+        </ng-container>
+        <ng-container matColumnDef="delete" >  
+            <mat-header-cell *matHeaderCellDef style="margin-left: 2%;"> Deletar</mat-header-cell>  
+            <mat-cell *matCellDef="let c"><button mat-button  color="warn" (click)="delet(c)"><mat-icon>delete</mat-icon></button> </mat-cell>  
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>  
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>  
+    </mat-table>  
+
+    <!-- To use pagination in DataTable  -->  
+
+    <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">  
+    </mat-paginator>  
+</div>  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
 <mat-form-field>
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium">
@@ -68,5 +149,6 @@ margin-top: 2px;">
     </tr>
     </tbody>
   </table>
+-->
   </mat-card>
   

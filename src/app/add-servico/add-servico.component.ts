@@ -47,7 +47,7 @@ export class AddServicoComponent implements OnInit {
     this.serv.ganhoFuncionario = resultFun.toFixed(2) as any
     this.serv.ganhodono = resultDono.toFixed(2) as any
     console.log(this.serv)
-     alert("Salvo com Sucesso, atualize a pagina quando for possível")
+    
     this.servicoService.save(this.serv).subscribe((p:Servico)=>{
       this.newServ.push(p) 
      
@@ -61,6 +61,12 @@ export class AddServicoComponent implements OnInit {
     this.snackBar.open("Deu um erro ao conecta ao server")
    }
   }
+  this.snackBar.open('Salvo com sucesso','X',{
+    duration:2000,
+    verticalPosition:'top',
+    panelClass:['snack_ok'],
+
+  })
   
 }
 
@@ -72,7 +78,12 @@ export class AddServicoComponent implements OnInit {
 delet(i:Servico){
   console.log(i.id)
  this.servicoService.deletSer(i).subscribe()
- alert("Deletado com sucesso, atualize a pagina quando for possível")
+ this.snackBar.open('Deletado com sucesso, por favor atualize a página','X',{
+  duration:2000,
+  verticalPosition:'top',
+  panelClass:['snack_ok'],
+
+ })
  
 }
 

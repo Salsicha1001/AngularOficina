@@ -16,11 +16,8 @@ export class ProdutcsService {
 
 
 //Solucão
-  get(): Observable<Peca[]> {
-  
-    return  this.http.get<Peca[]>(this.url1)
- 
-
+  get() {
+    return  this.http.get<Peca>(this.url1)
 }
 
   save(p:Peca): Observable<Peca>{
@@ -28,6 +25,9 @@ export class ProdutcsService {
    }
    geta(): Observable <Peca[]> {
     return this.http.get<Peca[]>(`${this.url1}/getproducts`)
+  }
+  deletProd(p:Peca){
+    return this.http.delete(`${this.url}/deleteprod/${p.id}`)
   }
 }
 

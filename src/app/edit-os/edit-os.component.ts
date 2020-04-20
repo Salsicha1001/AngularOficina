@@ -1,3 +1,4 @@
+import { CartService } from './../Services/cart.service';
 import { Cart } from './cart.model';
 import { AdcPecasComponent } from './../adc-pecas/adc-pecas.component';
 import { MatDialog } from '@angular/material';
@@ -35,12 +36,12 @@ stt:status[]=[
   {name:'Espera'},
   {name:'Negado'}
 ]
-peca:Peca={
-  name:'',codBarras:null,marca:'',price:null,qtd:null,Empresa:'',data:new Date()
-}
+ peca:Peca={
+   name:'',codBarras:null,marca:'',precoDeCompra:null,qtd:null,Empresa:'',data:new Date(),precoDeVenda:null,lucro:null
+ }
 cart:Cart={
 
-  item:[{}],totalPrice:null,totalQtd:null
+  item:[{}],totalPrice:null,totalQtd:null,CODVERIF:null
 } 
 
  newCart:Cart[]=[]
@@ -53,20 +54,37 @@ simpleRqProd$ :Observable<Peca[]>
   }
   osed:EditOsModel={
     idOs:this.id,SERVICOS:[],STATUS:''  }
-  constructor(private osService: OsServiceService, private dialog:MatDialog, private router: Router,private route: ActivatedRoute,private produtcService: ProdutcsService) {
+  constructor(private osService: OsServiceService,private cartService:CartService, private dialog:MatDialog, private router: Router,private route: ActivatedRoute,private produtcService: ProdutcsService) {
    }
    
 
   ngOnInit() {
-
+   
   this.des=  this.route.params.subscribe((params:any)=>{
       this.id=  params['id']
   
     })
-console.log(this.id)
+
     this.simplereqos$ = this.osService.getid(this.id)
     
+     this.cartService.get().subscribe((c)=>{
+       
+      for(let key in c){
+      
+        //console.log(c[key])
+        if(c[key].IDOS == this.id){
+          let li:Cart={
+            id:c[key].id,
+            item:[{NOME:c[key].NOME,PRECODEVENDA:c[key].PRECODEVENDA}],totalPrice:c[key].totalPrice,totalQtd:c[key].totalQtd, CODVERIF:c[key].CODVERIF
+          } 
+       
+          this.newCart.push(li)
+        }  
+        
+      }
     
+    })
+    console.log(this.newCart)
   }
 
 
@@ -83,18 +101,37 @@ console.log(this.id)
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed' );
-      for(let key in result){
-        list.totalPrice = result[key].PRICE
+     // console.log(this.newCart)
+     var ff = false
+      for(let key in this.newCart){
+        for(let k in result){
+        list.CODVERIF = result[k].CODVERIF
+     
+      
+        if(this.newCart[key].CODVERIF != list.CODVERIF){
+          list.totalPrice = result[k].PRECODEVENDA
+          list.idos = this.id
+         list.item=result
+        }else{
+          ff = true
+          alert("Esse produto ja esta cadastrado")
+    
+        }
       }
-      console.log(result)
-     list.item=result
-   
-     this.newCart.push(list)
-
-      console.log(this.newCart)
-    });
+      
   }
+  if(ff == false){
+    this.newCart.push(list)
+    this.cartService.save(list).subscribe()
+      }
+  })
+      
+ 
+}
   
+
+
+///
 
 
 
@@ -106,7 +143,7 @@ console.log(this.id)
      var tt = this.newCart[key].item
       for(let a in tt){
      //   console.log(tt[a].PRICE)
-     var v = tt[a].PRICE
+     var v = tt[a].PRECODEVENDA
       }
    }
  }
@@ -121,13 +158,14 @@ console.log(this.id)
 
 
   removeqtd(i){
+
     for(let key in this.newCart){
       if(this.newCart[key] == i){
         //console.log(this.newCart[key].item)
         var tt = this.newCart[key].item
          for(let a in tt){
         //   console.log(tt[a].PRICE)
-        var v = tt[a].PRICE
+        var v = tt[a].PRECODEVENDA
          }
       }
     }
@@ -139,8 +177,13 @@ console.log(this.id)
         this.newCart[key].totalPrice -=v
         }else{
          var a = this.newCart[key]
+     
+        this.cartService.delete(i).subscribe()
         var b=  this.newCart.indexOf(a)
+      //  console.log(i)
+      
           this.newCart.splice(b,1)
+         
         }
       }
     }

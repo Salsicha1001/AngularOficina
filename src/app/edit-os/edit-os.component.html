@@ -22,11 +22,12 @@
     </mat-card>
     <br>
     <mat-card>
-      <form>   
-        <mat-label>Adição de peças</mat-label>
+      <form>  <div >
+        <mat-hint>Adição de peças/Serviços</mat-hint>
         <br>
-        <button mat-mini-fab color="primary"style="margin-rigth:-5%;margin-left:3%;" (click)="add()"><mat-icon>add</mat-icon></button>
-   
+        <button mat-mini-fab color="primary" style="margin-left:3%;" (click)="add()"><mat-icon>add</mat-icon></button>
+      </div> 
+    
 
 <mat-card *ngIf="newCart.length >0">
   <table> 
@@ -43,7 +44,7 @@
      <td><button mat-mini-fab color="primary" (click)="addqtd(c)"><mat-icon>add</mat-icon></button></td>
         <td>{{c.totalQtd}}</td>
         <td><button mat-mini-fab color="accent" (click)="removeqtd(c)"><mat-icon>remove</mat-icon></button></td>
-      <td>R${{c.totalPrice}}</td>    
+      <td>R${{c.totalPrice| number : '.2'}}</td>    
       </tr>
     </tbody>
   </table>

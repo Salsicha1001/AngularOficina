@@ -1,3 +1,5 @@
+import { ServicoService } from './../Services/servico.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { Peca } from './../add-estoque/produto.model';
 import { Observable, Subscription, observable } from 'rxjs';
@@ -15,8 +17,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./adc-pecas.component.css']
 })
 export class AdcPecasComponent implements OnInit {
-  simpleRqProd$ : Observable<Peca[]>
-
+  DataTable: any;
+  displayedColumns: string[] = ['name','adicionar'];
+  DataTableServ: any;
  obj=[{}]
   
 
@@ -34,17 +37,34 @@ adc(i){
 }
  
 
-  constructor(private produtcService: ProdutcsService, private route: ActivatedRoute ,
+  constructor(private produtcService: ProdutcsService, private route: ActivatedRoute ,private servicoService:ServicoService,
     public dialogRef: MatDialogRef<EditOsComponent>,
     @Inject(MAT_DIALOG_DATA) public p:[]
   ) {  this.obj = p 
-    this.simpleRqProd$ =  this.produtcService.get()
+     this.produtcService.get()
 
      
  }
 
   ngOnInit(): void {
-   
-  }
+    this.produtcService.get().subscribe(res=>{
+      this.DataTable = new MatTableDataSource();  
+      this.DataTable.data = res;  
+      console.log(this.DataTable.data);  
+    })
+  
+
+  this.servicoService.getAll().subscribe(ress=>{
+    this.DataTableServ = new MatTableDataSource();  
+    this.DataTableServ.data = ress;  
+    console.log(this.DataTableServ.data);  
+  })
+}
+
+
+
+
+
+
 
 }
