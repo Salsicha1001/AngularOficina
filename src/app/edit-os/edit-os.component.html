@@ -22,10 +22,27 @@
     </mat-card>
     <br>
     <mat-card>
-      <form>  <div >
-        <mat-hint>Adição de peças/Serviços</mat-hint>
+      <form>  <div style=" display: flex; 
+        justify-content: space-between;">
+        <mat-hint >Adição de peças/Serviços</mat-hint>
         <br>
         <button mat-mini-fab color="primary" style="margin-left:3%;" (click)="add()"><mat-icon>add</mat-icon></button>
+       
+         
+        <mat-form-field id="sit">
+          <mat-label>Situação</mat-label>
+          <mat-select [(value)]="select" (selectionChange)="teste()">
+         
+              <mat-option value="Aprovado">Aprovado</mat-option>
+              <mat-option value="Espera">Espera</mat-option>
+              <mat-option value="Negado">Negado</mat-option>
+      
+          </mat-select>
+        </mat-form-field>
+       
+    
+         
+       
       </div> 
     
 
@@ -46,9 +63,10 @@
         <td><button mat-mini-fab color="accent" (click)="removeqtd(c)"><mat-icon>remove</mat-icon></button></td>
       <td>R${{c.totalPrice| number : '.2'}}</td>    
       </tr>
+      
     </tbody>
   </table>
-
+<mat-card>Total: R${{total |number:'.2'}}</mat-card>
 </mat-card>
 
 
@@ -61,15 +79,7 @@
 
 <br>
 
-            <mat-form-field>
-              <mat-label>Situação</mat-label>
-              <mat-select>
-                <mat-option *ngFor="let stts of stt" [value]="stts">
-                  {{stts.name}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-
+       
       </form>
     </mat-card>
 </div>

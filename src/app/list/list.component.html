@@ -1,52 +1,49 @@
-<div class="mat-card">
+ <div class="example-table-container">
+ <mat-table #Table [dataSource]="DataTable" class="example-table"
+>  
 
-  <h3>Clientes:</h3>
+  <ng-container matColumnDef="id">  
+    <mat-header-cell *matHeaderCellDef style="margin-right:-5%"><mat-icon>account_circle</mat-icon></mat-header-cell>  
+    <mat-cell *matCellDef="let c"  style="margin-right:-5%"> {{c.id}} </mat-cell>  
+</ng-container>  
+<ng-container matColumnDef="Nome" >  
+    <mat-header-cell *matHeaderCellDef> Nome  </mat-header-cell>  
+    <mat-cell *matCellDef="let c"> {{c.NAME}} </mat-cell>  
+</ng-container>  
+<ng-container matColumnDef="Cpf">  
+    <mat-header-cell *matHeaderCellDef> CPF  </mat-header-cell>  
+    <mat-cell *matCellDef="let c"> {{c.CPF}} </mat-cell>  
+</ng-container>  
+<ng-container matColumnDef="Email">  
+    <mat-header-cell *matHeaderCellDef style="margin-right: 3%;" >Email</mat-header-cell>  
+    <mat-cell *matCellDef="let c"style="margin-right: 3%;" >{{c.EMAIL}}</mat-cell>  
+</ng-container> 
+<ng-container matColumnDef="Data de Nascimento">  
+    <mat-header-cell *matHeaderCellDef > Data de Nascimento  </mat-header-cell>  
+    <mat-cell *matCellDef="let c"> {{c.DATE}} </mat-cell>  
+</ng-container>  
+<ng-container matColumnDef="Telefone">  
+    <mat-header-cell *matHeaderCellDef> Telefone </mat-header-cell>  
+    <mat-cell *matCellDef="let c"> {{c.TELL}} </mat-cell>  
+</ng-container> 
+<ng-container matColumnDef="CEP">  
+    <mat-header-cell *matHeaderCellDef> CEP </mat-header-cell>  
+    <mat-cell *matCellDef="let c">{{c.CEP}} </mat-cell>  
+</ng-container>  
+<ng-container matColumnDef="Editar">  
+    <mat-header-cell *matHeaderCellDef> Editar </mat-header-cell>  
+    <mat-cell *matCellDef="let c"><button mat-mini-fab color="primary" (click)="editClient(c)"><mat-icon>create</mat-icon></button></mat-cell>  
+</ng-container>
+<ng-container matColumnDef="Deletar">  
+    <mat-header-cell *matHeaderCellDef >Deletar</mat-header-cell>  
+    <mat-cell *matCellDef="let c"  ><button mat-mini-fab color="warn" (click)="delet(c)"><mat-icon>delete</mat-icon></button></mat-cell>  
+</ng-container>
+<mat-header-row *matHeaderRowDef="displayedColumns" style="padding-left: -20px;"></mat-header-row>  
+<mat-row *matRowDef="let row; columns: displayedColumns;"  style="padding-left: -20px;"></mat-row>  
+</mat-table>  
 
-    <mat-card>
-<table > 
-  <tr>
-    <td><mat-icon>account_circle</mat-icon></td>
-    <td>id</td>
-    <td>Nome</td>
-    <td>CPF</td>
-    <td>Email</td>
-    <td>Data de Nascimento</td>
-    <td>Telefone</td>
-    <td>CEP</td>
-  
-  
-    <td><mat-icon>create</mat-icon></td>
-  
-  </tr>
-  <tbody *ngIf="simpleRqClient$ |async as clients">
-    <tr *ngFor="let c of clients" >
-      <td><mat-icon>account_circle</mat-icon></td>
-      <td>{{c.id}}</td>
-      <td>{{c.NAME}}</td>
-      <td>{{c.CPF}}</td>
-      <td>{{c.EMAIL}}</td>
-      <td>{{c.DATE}}</td>
-      <td>{{c.TELL}}</td>
-      <td>{{c.CEP}}</td>
+<!-- To use pagination in DataTable  -->  
 
-    <td><button mat-mini-fab color="primary" (click)="editClient(c)"><mat-icon>create</mat-icon></button></td>
-    
-  </tr>
-  </tbody>
-</table>
-</mat-card>
-<!-- <tbody *ngIf="simpleRqClient$ |async as clients">
-  <tr *ngFor="let c of clients">
-    <td><mat-icon>account_circle</mat-icon></td>
-    <td>{{c.id}}</td>
-    <td>{{c.NAME}}</td>
-    <td>{{c.CPF}}</td>
-    <td>{{c.EMAIL}}</td>
-    <td>{{c.NUMBER}}</td>
-<div mat-dialog-actions>
-    <button mat-button (click)="cancel()">Cancelar</button>
-    <button mat-button [mat-dialog-close]="client" cdkFocusInitial>Salvar</button>
-</div>-->
-
-  
+<mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">  
+</mat-paginator>  
 </div>

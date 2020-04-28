@@ -10,7 +10,7 @@
 <mat-form-field appearance="legacy">
     <mat-label>Nome</mat-label>
     <input matInput placeholder="" [(ngModel)]="cliente.NAME" name="name" #nameField="ngModel" required> 
-    <mat-hint>Preencha com o nome completo</mat-hint>
+    <mat-hint>Preencha com o nome</mat-hint>
     <mat-error *ngIf="nameField.invalid && nameField.touched">Digite um nome valido</mat-error>
     </mat-form-field>
 
@@ -20,7 +20,7 @@
     <mat-hint>Preencha com CPF</mat-hint>
   </mat-form-field>
   <mat-form-field appearance="legacy">
-    <mat-label>Date de nascimento</mat-label>
+    <mat-hint>Date de nascimento</mat-hint>
     <input matInput [matDatepicker]="picker" [(ngModel)]="cliente.DATE" (dateInput)="addEvent($event)"name="dates" required>
     <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>

@@ -81,22 +81,18 @@ export class AddOsComponent implements OnInit {
         map(value => this._filter(value))
       );
       this.simpleRqClient$.subscribe((c)=>{
-        //console.log(c)
+
         for(let key in c){
         
           this.options[key] = c[key].id +" "+c[key].NAME 
         }
-      //  console.log(this.options)
       })
       this.funcion$.subscribe((f)=>{
-        //console.log(f)
         for(let key in f){
           this.nameFuncio[key] =f[key].id+' '+ f[key].NOME
         }
     
       })
-
-
 
   }
   private _filter(value: string): string[] {
@@ -109,8 +105,6 @@ export class AddOsComponent implements OnInit {
     this.month = this.os.DATEP._i.month+1
     this.year = this.os.DATEP._i.year
     this.finaly = this.day+"/"+this.month+"/"+this.year
-   // console.log(this.finaly)
-  //
   }
 
 
@@ -145,9 +139,15 @@ export class AddOsComponent implements OnInit {
     this.newOS.push(p)
   ///
   })
-  
+  this.os.FUNCIONARIO =''
+  this.os.MARCA=''
+  this.os.MODELO=''
+  this.os.PLACA=''
+  this.os.OBS=''
+  this.os.CLIENTE=''
+  this.os.ANO= null
 }
 
-//pensando na vida noturna
+
 }
 

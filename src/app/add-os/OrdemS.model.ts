@@ -11,4 +11,5 @@ export class OrdemService{
     OBS:string
     IDCLIENT?:any
     IDFUNCIONARIO?:any
+    STATUS?:string
 }

@@ -22,7 +22,6 @@ export class AddEstoqueComponent implements OnInit {
    name:'',codBarras:null,marca:'',precoDeCompra:null,qtd:null,Empresa:'',data:new Date(),precoDeVenda:null,lucro:null
  }
  newProduct:Peca[]=[]
-  dataSource: any;
   produt :Peca[]
   a: any;
   displayedColumns: string[] = ['name','marca','Empresa','codBarras','qtd','precoDeCompra','lucro','precoDeVenda','delete'];

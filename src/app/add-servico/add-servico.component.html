@@ -70,31 +70,4 @@ margin-top: 2px;">
     <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">  
     </mat-paginator>  
 </div>  
-
-<!--
-   <table > 
-    <tr>
-      
-      <td>Descrição</td>
-      <td>Ganho Total</td>
-      <td>Lucro</td>
-      <td>Valor do funcionario</td>
-      <td>Ganhos</td>
-      <td>Deletar</td>
-         
-    </tr>
-    <tbody *ngIf="MyDataSource">
-        <tr *ngFor="let c of MyDataSource['data']">
-           
-            <td>{{c.DESCRICAO}}</td>
-            <td>R$ {{c.VALOR}}</td>
-            <td>{{c.LUCRO}}%</td>
-            <td>R${{c.GANHOFUN}}</td>
-            <td>R$ {{c.GANHODONO}}</td>
-      <td><button mat-button  color="warn" (click)="delet(c)"><mat-icon>delete</mat-icon></button></td>
-    </tr>
-    </tbody>
-  </table>
-  <mat-paginator  #paginator [pageSize]="5" [pageSizeOptions]="[5]"></mat-paginator>
--->
 </mat-card>

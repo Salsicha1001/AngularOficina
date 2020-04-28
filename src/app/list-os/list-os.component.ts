@@ -1,8 +1,10 @@
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { OrdemService } from './../add-os/OrdemS.model';
 import { OsServiceService } from './../Services/os-service.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-list-os',
@@ -15,11 +17,18 @@ export class ListOsComponent implements OnInit {
     os:OrdemService = {
       CLIENTE:'',PLACA:'',MODELO:'',MARCA:'',ANO:null,FUNCIONARIO:'',DATEP:'',DATEI:'',OBS:'',IDCLIENT:'',IDFUNCIONARIO:''
     }
+    DataTable: any; 
+    displayedColumns: string[] = ['OS','Placa','Cliente','Modelo','Responsável','Data de Entrega','Opção'];
+    @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   
   constructor(private osService:OsServiceService,private router: Router) { }
 
   ngOnInit() {
-    this.simpleRqos$= this.osService.get()
+ this.osService.get().subscribe((os)=>{
+    this.DataTable = new MatTableDataSource();  
+    this.DataTable.data = os;  
+    this.DataTable.paginator = this.paginator; 
+ })
     
   }
  

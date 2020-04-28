@@ -30,7 +30,9 @@ export class OsServiceService {
     
   }
 
-
+patchStts(i:OrdemService){
+  return this.http.patch(`${this.url}/editStt/${i.id}`, i)
+}
 
   save(v:OrdemService): Observable<OrdemService>{
     return this.http.post<OrdemService>(`${this.url}/saveos`, v)

@@ -127,19 +127,10 @@ onSubmit(){
   this.cliente.CEP = this.cepService.emmitCep
 
   console.log(this.cliente)
-  //console.log(this.cepService.emmitCep)
-
-    
 
     this.clientsService.save(this.cliente).subscribe((v:Client)=>{
 
       this.newClient.push(v)
-      this.snackBar.open('Salvo com Sucesso','X',{
-        duration:2000,
-        verticalPosition:'top',
-        panelClass:['snack_ok'],
-  
-      })
      },
      (err)=>{
        console.error(err)
@@ -151,7 +142,13 @@ onSubmit(){
       } 
      }) 
   
-  
+     this.snackBar.open('Salvo com Sucesso','X',{
+      duration:2000,
+      verticalPosition:'top',
+      panelClass:['snack_ok'],
+
+    })
+   
    
    
     }

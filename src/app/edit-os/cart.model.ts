@@ -1,9 +1,11 @@
 export interface Cart{
     id?:number,
-    idos?:number
-    item:[{PRECODEVENDA?:number,NOME?:string}],
+    idos?:number,
+    status?:string
+    item:[{PRECODEVENDA?:number,NOME?:string, CODVERIF?:number}],
     totalQtd:number,
     totalPrice:number,
     CODVERIF?:number
+    
 
 }

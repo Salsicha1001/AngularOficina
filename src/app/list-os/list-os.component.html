@@ -1,25 +1,42 @@
 <mat-card>
-    <h3>Ordem de serviço:</h3>
-    <table>
-        <tr>
-            <th>Os</th>
-            <th>Placa</th>
-            <th>Cliente</th>
-            <th>Modelo</th>
-            <th>Responsavel</th>
-            <th>Data de entrega</th>
-            <th>Opção</th>
-          </tr>
-        <tbody *ngIf="simpleRqos$ |async as os" >
-        <tr *ngFor="let o of os">  
-            <td>{{o.id}}</td>
-            <td>{{o.PLACA}}</td>
-            <td>{{o.CLIENTE}}</td>
-            <td>{{o.MODELO}}</td>
-            <td>{{o.FUNCIONARIO}}</td>
-            <td>{{o.DATEP}}</td>
-            <td><button mat-mini-fab color="primary" routerLink="/EditOS"(click)="getos(o)"><mat-icon>build</mat-icon> </button></td>
-        </tr>  
-        </tbody> 
-    </table>
-</mat-card>
+<mat-table #Table [dataSource]="DataTable">  
+
+       
+    <ng-container matColumnDef="OS">  
+        <mat-header-cell *matHeaderCellDef sticky> OS  </mat-header-cell>  
+        <mat-cell *matCellDef="let c"> {{c.id}} </mat-cell>  
+    </ng-container>  
+    <ng-container matColumnDef="Placa">  
+        <mat-header-cell *matHeaderCellDef> Placa  </mat-header-cell>  
+        <mat-cell *matCellDef="let c">{{c.PLACA}} </mat-cell>  
+    </ng-container>  
+    <ng-container matColumnDef="Cliente" >  
+        <mat-header-cell *matHeaderCellDef> Cliente  </mat-header-cell>  
+        <mat-cell *matCellDef="let c"> {{c.CLIENTE}} </mat-cell>  
+    </ng-container>  
+    <ng-container matColumnDef="Modelo">  
+        <mat-header-cell *matHeaderCellDef>Modelo</mat-header-cell>  
+        <mat-cell *matCellDef="let c"> {{c.MODELO}} </mat-cell>  
+    </ng-container> 
+    <ng-container matColumnDef="Responsável">  
+        <mat-header-cell *matHeaderCellDef> Responsável </mat-header-cell>  
+        <mat-cell *matCellDef="let c"> {{c.FUNCIONARIO}} </mat-cell>  
+    </ng-container>  
+    <ng-container matColumnDef="Data de Entrega">  
+        <mat-header-cell *matHeaderCellDef>Data de Entrega </mat-header-cell>  
+        <mat-cell *matCellDef="let c"> {{c.DATEP}} </mat-cell>  
+    </ng-container> 
+    <ng-container matColumnDef="Opção">  
+        <mat-header-cell *matHeaderCellDef> Opção </mat-header-cell>  
+        <mat-cell *matCellDef="let c"> <button mat-mini-fab color="primary" routerLink="/EditOS"(click)="getos(c)"><mat-icon>build</mat-icon> </button> </mat-cell>  
+    </ng-container>  
+    
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>  
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>  
+</mat-table>  
+
+<!-- To use pagination in DataTable  -->  
+
+<mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">  
+</mat-paginator>  
+    </mat-card>

@@ -43,6 +43,8 @@ return this.http.post<Client>(`${this.url}/saveclient`, v)
   editClient(c:Client): Observable<Client>{
    return this.http.patch<Client>(`${this.url}/list/${c.id}`, c)
   }
-
+  delet(p:Client){
+    return this.http.delete(`${this.url}/deletclient/${p.id}`)
+  }
 
 }

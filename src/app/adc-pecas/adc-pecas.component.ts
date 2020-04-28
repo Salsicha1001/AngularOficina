@@ -1,3 +1,4 @@
+import { MatPaginator } from '@angular/material/paginator';
 import { ServicoService } from './../Services/servico.service';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -5,7 +6,7 @@ import { Peca } from './../add-estoque/produto.model';
 import { Observable, Subscription, observable } from 'rxjs';
 import { ProdutcsService } from './../Services/produtcs.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { EditOsComponent } from '../edit-os/edit-os.component';
 import { ActivatedRoute } from '@angular/router';
 
@@ -21,7 +22,7 @@ export class AdcPecasComponent implements OnInit {
   displayedColumns: string[] = ['name','adicionar'];
   DataTableServ: any;
  obj=[{}]
-  
+ @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
 adc(i){
   var b = false
@@ -50,14 +51,14 @@ adc(i){
     this.produtcService.get().subscribe(res=>{
       this.DataTable = new MatTableDataSource();  
       this.DataTable.data = res;  
-      console.log(this.DataTable.data);  
+      this.DataTable.paginator = this.paginator; 
     })
   
 
   this.servicoService.getAll().subscribe(ress=>{
     this.DataTableServ = new MatTableDataSource();  
     this.DataTableServ.data = ress;  
-    console.log(this.DataTableServ.data);  
+    this.DataTableServ.paginator = this.paginator; 
   })
 }
 
