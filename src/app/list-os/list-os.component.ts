@@ -18,7 +18,7 @@ export class ListOsComponent implements OnInit {
       CLIENTE:'',PLACA:'',MODELO:'',MARCA:'',ANO:null,FUNCIONARIO:'',DATEP:'',DATEI:'',OBS:'',IDCLIENT:'',IDFUNCIONARIO:''
     }
     DataTable: any; 
-    displayedColumns: string[] = ['OS','Placa','Cliente','Modelo','Responsável','Data de Entrega','Opção'];
+    displayedColumns: string[] = ['OS','Placa','Cliente','Modelo','Responsável','Data de Entrega','Opção', 'deletar'];
     @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   
   constructor(private osService:OsServiceService,private router: Router) { }
@@ -37,4 +37,12 @@ export class ListOsComponent implements OnInit {
     this.router.navigate(['/EditOS',o.id])
   }
 
+  delet(i){
+    console.log(i)
+    var r= confirm("Tem Certeza?")
+    if (r == true) {
+      this.osService.deletOs(i).subscribe()
+      alert("Deletado com Sucesso, Atualize a página")
+    } 
+  }
 }

@@ -1,10 +1,11 @@
+import { PagamentoComponent } from './../pagamento/pagamento.component';
 import { CartService } from './../Services/cart.service';
 import { Cart } from './cart.model';
 import { AdcPecasComponent } from './../adc-pecas/adc-pecas.component';
 import { MatDialog } from '@angular/material';
 import { Peca } from './../add-estoque/produto.model';
 import { ProdutcsService } from './../Services/produtcs.service';
-import { EditOsModel } from './editOs.model';
+
 
 
 import { Router, ActivatedRoute } from '@angular/router';
@@ -29,6 +30,7 @@ interface status {
 export class EditOsComponent implements OnInit {
   id;
 mude:any
+
 select:any
  peca:Peca={
    name:'',codBarras:null,marca:'',precoDeCompra:null,qtd:null,Empresa:'',data:new Date(),precoDeVenda:null,lucro:null
@@ -45,8 +47,7 @@ simpleRqProd$ :Observable<Peca[]>
   os:OrdemService = {
     CLIENTE:'',PLACA:'',MODELO:'',MARCA:'',ANO:null,FUNCIONARIO:'',DATEP:'',DATEI:'',OBS:'',IDCLIENT:'',IDFUNCIONARIO:''
   }
-  osed:EditOsModel={
-    idOs:this.id,SERVICOS:[],STATUS:''  }
+
   constructor(private osService: OsServiceService,private cartService:CartService, private dialog:MatDialog, private router: Router,private route: ActivatedRoute,private produtcService: ProdutcsService) {
    }
    
@@ -59,6 +60,7 @@ simpleRqProd$ :Observable<Peca[]>
     this.simplereqos$ = this.osService.getid(this.id)
     this.osService.getid(this.id).subscribe((a)=>{
       this.mude = a
+    
     this.select = a.STATUS
     })
      this.cartService.get().subscribe((c)=>{
@@ -91,12 +93,15 @@ simpleRqProd$ :Observable<Peca[]>
     console.log(this.newCart)
   }
 
-
+saveobs(){
+  this.osService.eidtObs(this.mude).subscribe()
+  alert("Foi alterado com sucesso!")
+}
   add(){
    
     
     const dialogRef = this.dialog.open(AdcPecasComponent, {
-      width: '600px',
+      width: '800px',
       data: []
     });
 
@@ -195,7 +200,15 @@ teste(){
 
 
 
+pag(){
+  console.log(this.total)
+  const dialogRef = this.dialog.open(PagamentoComponent, {
+    width: '600px',
+    data: this.total
+  });
+  dialogRef.afterClosed().subscribe(result => {})
 
+}
 
 
   ngOnDestroy(): void {

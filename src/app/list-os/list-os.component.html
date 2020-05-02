@@ -30,6 +30,10 @@
         <mat-header-cell *matHeaderCellDef> Opção </mat-header-cell>  
         <mat-cell *matCellDef="let c"> <button mat-mini-fab color="primary" routerLink="/EditOS"(click)="getos(c)"><mat-icon>build</mat-icon> </button> </mat-cell>  
     </ng-container>  
+     <ng-container matColumnDef="deletar">  
+        <mat-header-cell *matHeaderCellDef> Deletar </mat-header-cell>  
+        <mat-cell *matCellDef="let c"> <button mat-mini-fab color="warn" (click)="delet(c)"><mat-icon>delete</mat-icon> </button> </mat-cell>  
+    </ng-container>  
     
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>  
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>  

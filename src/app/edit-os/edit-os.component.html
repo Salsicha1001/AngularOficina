@@ -17,8 +17,10 @@
         <input matInput readonly value="{{os.CLIENTE}}">
        <mat-icon matPrefix>account_circle</mat-icon>
       </mat-form-field>
-
+     
     </form>
+
+    
     </mat-card>
     <br>
     <mat-card>
@@ -66,19 +68,23 @@
       
     </tbody>
   </table>
-<mat-card>Total: R${{total |number:'.2'}}</mat-card>
+<mat-card><div style=" display: flex;   justify-content: space-between;">
+  Total: R${{total |number:'.2'}}
+  <button mat-raised-button  style="margin-left: 15%;  background-color: rgb(87, 212, 87); color: white;" (click)="pag()">Pagamento</button>
+</div>
+</mat-card>
 </mat-card>
 
 
 
-
-
-
-
-
-
 <br>
-
+<mat-card>
+  <mat-form-field class="example-full-width">
+  <mat-label>Observação</mat-label>
+    <textarea matInput [(ngModel)]="mude.OBS" name="obs"></textarea>
+  </mat-form-field>
+  <button mat-raised-button color="primary" style="margin-left: 88%;" (click)="saveobs()">Salvar Observação</button>
+</mat-card>
        
       </form>
     </mat-card>

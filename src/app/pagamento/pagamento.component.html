@@ -1,0 +1,54 @@
+<div>
+<h2>Formas de Pagamento:</h2>
+<form (ngSubmit)="onSubmit()">
+    <mat-form-field >
+        <mat-label>Foma de Pagamento</mat-label>
+        <mat-select [(ngModel)]="forma" name="forma">
+       
+            <mat-option value="dinheiro">Dinehiro</mat-option>
+            <mat-option value="cartaoD">Cartão de Débito</mat-option>
+            <mat-option value="cartaoC">Cartão de Crédito</mat-option>
+    
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="forma == 'cartaoC'">
+          <mat-label>Valor Total:R${{valor |number:'.2'}}</mat-label>
+        <mat-form-field style="margin-left: 15px;">
+            <mat-label>Parcelas</mat-label>
+            <mat-select [(ngModel)]="parcela" name="parcela" (selectionChange)="divisao()">
+           
+                <mat-option value="1">1x</mat-option>
+                <mat-option value="2">2x</mat-option>
+                <mat-option value="3">3x</mat-option>
+                <mat-option value="4">4x</mat-option>
+                <mat-option value="5">5x</mat-option>
+                <mat-option value="6">6x</mat-option>
+                <mat-option value="7">7x</mat-option>
+                <mat-option value="8">8x</mat-option>
+                <mat-option value="9">9x</mat-option>
+                <mat-option value="10">10x</mat-option>
+                <mat-option value="11">11x</mat-option>
+                <mat-option value="12">12x</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-label>Parcelado:R${{res |number:'.2'}}</mat-label>
+       
+      </div>
+      <div *ngIf="forma == 'cartaoD'">
+        <mat-label>Valor Total:R${{valor |number:'.2'}}</mat-label>
+        <mat-form-field class="legacy" style="margin-left:5%">
+            <mat-label>Pago</mat-label>
+            <input matInput type="number" [(ngModel)]="pgd" name="pgd" (change)="dep()">
+          </mat-form-field>
+          <mat-label>Restante:R${{res |number:'.2'}}</mat-label>
+      </div>
+           <div *ngIf="forma == 'dinheiro'">
+        <mat-label>Valor Total:R${{valor |number:'.2'}}</mat-label>
+        <mat-form-field class="legacy" style="margin-left:5%">
+            <mat-label>Pago</mat-label>
+            <input matInput type="number" [(ngModel)]="dinheiro" name="dinheiro" (change)="dinhe()">
+          </mat-form-field>
+          <mat-label>Restante:R${{res |number:'.2'}}</mat-label>
+      </div>
+</form>
+</div>

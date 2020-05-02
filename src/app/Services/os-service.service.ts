@@ -33,8 +33,17 @@ export class OsServiceService {
 patchStts(i:OrdemService){
   return this.http.patch(`${this.url}/editStt/${i.id}`, i)
 }
+eidtObs(i:OrdemService){
+  return this.http.patch(`${this.url}/editObs/${i.id}`, i)
+}
+deletOs(s:OrdemService){
+  return this.http.delete(`${this.url}/deleteOs/${s.id}`)
+}
 
   save(v:OrdemService): Observable<OrdemService>{
+    if(!this.loaded){
     return this.http.post<OrdemService>(`${this.url}/saveos`, v)
+    this.loaded = true
+    }
       }
 }
