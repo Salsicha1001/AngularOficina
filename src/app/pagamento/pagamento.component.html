@@ -6,12 +6,12 @@
         <mat-select [(ngModel)]="forma" name="forma">
        
             <mat-option value="dinheiro">Dinehiro</mat-option>
-            <mat-option value="cartaoD">Cartão de Débito</mat-option>
-            <mat-option value="cartaoC">Cartão de Crédito</mat-option>
+            <mat-option value="cartaoDebito">Cartão de Débito</mat-option>
+            <mat-option value="cartaoCredito">Cartão de Crédito</mat-option>
     
         </mat-select>
       </mat-form-field>
-      <div *ngIf="forma == 'cartaoC'">
+      <div *ngIf="forma == 'cartaoCredito'">
           <mat-label>Valor Total:R${{valor |number:'.2'}}</mat-label>
         <mat-form-field style="margin-left: 15px;">
             <mat-label>Parcelas</mat-label>
@@ -31,16 +31,20 @@
                 <mat-option value="12">12x</mat-option>
             </mat-select>
           </mat-form-field>
+          <br>
           <mat-label>Parcelado:R${{res |number:'.2'}}</mat-label>
        
       </div>
-      <div *ngIf="forma == 'cartaoD'">
+      <div *ngIf="forma == 'cartaoDebito'">
         <mat-label>Valor Total:R${{valor |number:'.2'}}</mat-label>
         <mat-form-field class="legacy" style="margin-left:5%">
             <mat-label>Pago</mat-label>
             <input matInput type="number" [(ngModel)]="pgd" name="pgd" (change)="dep()">
           </mat-form-field>
+          <br>
           <mat-label>Restante:R${{res |number:'.2'}}</mat-label>
+          <br>
+          <mat-label>Troco:R${{troco |number:'.2'}}</mat-label>
       </div>
            <div *ngIf="forma == 'dinheiro'">
         <mat-label>Valor Total:R${{valor |number:'.2'}}</mat-label>
@@ -48,7 +52,11 @@
             <mat-label>Pago</mat-label>
             <input matInput type="number" [(ngModel)]="dinheiro" name="dinheiro" (change)="dinhe()">
           </mat-form-field>
+          <br>
           <mat-label>Restante:R${{res |number:'.2'}}</mat-label>
+          <br>
+          <mat-label>Troco:R${{troco |number:'.2'}}</mat-label>
       </div>
+      <button mat-mini-fab color="primary" id="saves" [mat-dialog-close]="pag" cdkFocusInitial style="margin-left:60%"><mat-icon>done</mat-icon></button>
 </form>
 </div>

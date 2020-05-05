@@ -15,7 +15,9 @@ export class PagamentoComponent implements OnInit {
   res:any
   pgd:any
   dinheiro:any
-  constructor(   public dialogRef: MatDialogRef<EditOsComponent>,
+  troco=0
+  
+   constructor(   public dialogRef: MatDialogRef<EditOsComponent>,
     @Inject(MAT_DIALOG_DATA) public p:[]) { 
       this.valor = p
     }
@@ -37,13 +39,36 @@ export class PagamentoComponent implements OnInit {
   }
   divisao(){
     this.res = this.valor/parseFloat(this.parcela)
-    console.log(this.res)
+    if(this.res<0){
+      this.troco = this.res - this.valor
+      this.res = 0
+    }
+   
   }
   dep(){
+    this.troco = 0
     this.res = this.valor -this.pgd
+    if(this.res<0){
+      this.troco = this.valor - this.pgd
+
+      this.res = 0
+    }
+    this.troco = 0
+
+    this.pag.forma = this.forma
+    this.pag.pago = this.pgd
+   
+    this.pag.total = this.valor
+    this.pag.restante = this.res
   }
   dinhe(){
     this.res = this.valor -this.dinheiro
+    this.troco = 0
+    if(this.res<0){
+      this.troco = this.dinheiro - this.valor
+      this.troco = this.troco *-1
+      this.res = 0
+    }
   }
 
 }

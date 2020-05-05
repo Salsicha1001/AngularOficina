@@ -1,3 +1,9 @@
+
+    <div class="example-header">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
+        </mat-form-field>
+      </div>
 <mat-card>
 <mat-table #Table [dataSource]="DataTable">  
 

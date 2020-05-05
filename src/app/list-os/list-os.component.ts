@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { OrdemService } from './../add-os/OrdemS.model';
 import { OsServiceService } from './../Services/os-service.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort } from '@angular/material';
 
 @Component({
   selector: 'app-list-os',
@@ -20,6 +21,7 @@ export class ListOsComponent implements OnInit {
     DataTable: any; 
     displayedColumns: string[] = ['OS','Placa','Cliente','Modelo','Responsável','Data de Entrega','Opção', 'deletar'];
     @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+    @ViewChild(MatSort) sort: MatSort;
   
   constructor(private osService:OsServiceService,private router: Router) { }
 
@@ -28,10 +30,16 @@ export class ListOsComponent implements OnInit {
     this.DataTable = new MatTableDataSource();  
     this.DataTable.data = os;  
     this.DataTable.paginator = this.paginator; 
+    this.DataTable.sort = this.sort
  })
     
   }
  
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.DataTable.filter = filterValue;
+  }
   getos(o:OrdemService){
    console.log(o)
     this.router.navigate(['/EditOS',o.id])

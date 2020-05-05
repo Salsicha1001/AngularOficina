@@ -206,7 +206,9 @@ pag(){
     width: '600px',
     data: this.total
   });
-  dialogRef.afterClosed().subscribe(result => {})
+  dialogRef.afterClosed().subscribe(result => {
+    console.log(result)
+  })
 
 }
 
