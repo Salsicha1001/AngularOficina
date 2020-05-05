@@ -5,7 +5,7 @@
         <mat-label>Foma de Pagamento</mat-label>
         <mat-select [(ngModel)]="forma" name="forma">
        
-            <mat-option value="dinheiro">Dinehiro</mat-option>
+            <mat-option value="dinheiro">Dinheiro</mat-option>
             <mat-option value="cartaoDebito">Cartão de Débito</mat-option>
             <mat-option value="cartaoCredito">Cartão de Crédito</mat-option>
     
@@ -32,7 +32,7 @@
             </mat-select>
           </mat-form-field>
           <br>
-          <mat-label>Parcelado:R${{res |number:'.2'}}</mat-label>
+          <mat-label>Parcelado:R${{res | number:'.2'}}</mat-label>
        
       </div>
       <div *ngIf="forma == 'cartaoDebito'">

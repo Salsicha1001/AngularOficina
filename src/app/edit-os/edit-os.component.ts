@@ -16,10 +16,6 @@ import { Subscription, Observable } from 'rxjs';
 
 
 
-interface status {
-  name: string;
-}
-
 @Component({
   selector: 'app-edit-os',
   templateUrl: './edit-os.component.html',

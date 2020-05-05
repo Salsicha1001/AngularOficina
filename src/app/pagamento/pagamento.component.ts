@@ -40,7 +40,6 @@ export class PagamentoComponent implements OnInit {
   divisao(){
     this.res = this.valor/parseFloat(this.parcela)
     if(this.res<0){
-      this.troco = this.res - this.valor
       this.res = 0
     }
    
@@ -49,12 +48,12 @@ export class PagamentoComponent implements OnInit {
     this.troco = 0
     this.res = this.valor -this.pgd
     if(this.res<0){
-      this.troco = this.valor - this.pgd
+      this.troco = (this.valor - this.pgd)*-1 
 
       this.res = 0
-    }
+    }else{
     this.troco = 0
-
+    }
     this.pag.forma = this.forma
     this.pag.pago = this.pgd
    
@@ -70,5 +69,6 @@ export class PagamentoComponent implements OnInit {
       this.res = 0
     }
   }
+
 
 }
