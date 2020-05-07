@@ -1,5 +1,5 @@
 import { Observable, BehaviorSubject } from 'rxjs';
-import { Servico } from './../add-servico/servico.model';
+import { Servico } from '../../add-servico/servico.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 

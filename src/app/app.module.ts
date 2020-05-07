@@ -1,4 +1,4 @@
-import { CEPService } from './Services/cep.service';
+import { CEPService } from './Services/CepService/cep.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 

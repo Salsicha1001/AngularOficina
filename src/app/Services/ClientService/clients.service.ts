@@ -1,7 +1,7 @@
-import { OrdemService } from './../add-os/OrdemS.model';
+import { OrdemService } from '../../add-os/OrdemS.model';
 
 
-import { Client } from './../register-client/client.model';
+import { Client } from '../../register-client/client.model';
 import { Injectable,EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';

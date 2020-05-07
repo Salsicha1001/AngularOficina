@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { OrdemService } from './../add-os/OrdemS.model';
+import { OrdemService } from '../../add-os/OrdemS.model';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -7,11 +7,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class OsServiceService {
-  private os :OrdemService
   readonly url: string = 'http://localhost:3000'
   readonly url1: string = 'http://localhost:3000/listosall'
   private OSSub$ : BehaviorSubject<OrdemService[]> = new BehaviorSubject<OrdemService[]>(null)
-  private OSSub1$ : Observable<OrdemService>
   private loaded : boolean= false;
    a= {}
   

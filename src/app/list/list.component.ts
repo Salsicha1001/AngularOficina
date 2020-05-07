@@ -1,11 +1,11 @@
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { CEPService } from './../Services/cep.service';
+import { CEPService } from '../Services/CepService/cep.service';
 import { Cep } from './../EdCep/cep.model';
 
 import { EditClientComponent } from './../edit-client/edit-client.component';
 import { Client } from './../register-client/client.model';
-import { ClientsService } from '../Services/clients.service';
+import { ClientsService } from '../Services/ClientService/clients.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DataSource } from '@angular/cdk/collections';

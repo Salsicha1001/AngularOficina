@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { FUNCIO } from '../add-fun/Funcionario.model';
+import { FUNCIO } from '../../add-fun/Funcionario.model';
 
 @Injectable({
   providedIn: 'root'

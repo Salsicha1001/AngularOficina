@@ -2,7 +2,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { Observable } from 'rxjs';
 
-import { ProdutcsService } from './../Services/produtcs.service';
+import { ProdutcsService } from '../Services/ProductService/produtcs.service';
 import { Peca } from './produto.model';
 
 

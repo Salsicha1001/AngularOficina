@@ -38,11 +38,15 @@ export class PagamentoComponent implements OnInit {
 
   }
   divisao(){
-    this.res = this.valor/parseFloat(this.parcela)
+    this.res = this.valor/parseInt(this.parcela)
     if(this.res<0){
       this.res = 0
     }
-   
+    this.pag.forma = this.forma
+    this.pag.pago = this.res
+    this.pag.parcela = this.parcela
+    this.pag.total = this.valor
+    this.pag.restante = this.res
   }
   dep(){
     this.troco = 0
@@ -68,6 +72,11 @@ export class PagamentoComponent implements OnInit {
       this.troco = this.troco *-1
       this.res = 0
     }
+    this.pag.forma = this.forma
+    this.pag.pago = this.dinheiro
+   
+    this.pag.total = this.valor
+    this.pag.restante = this.res
   }
 
 

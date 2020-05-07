@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { OrdemService } from './../add-os/OrdemS.model';
-import { OsServiceService } from './../Services/os-service.service';
+import { OsServiceService } from '../Services/OsService/os-service.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material';
 

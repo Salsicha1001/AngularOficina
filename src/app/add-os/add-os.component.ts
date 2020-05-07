@@ -1,9 +1,9 @@
-import { OsServiceService } from './../Services/os-service.service';
+import { OsServiceService } from '../Services/OsService/os-service.service';
 import { OrdemService } from './OrdemS.model';
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
 import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
-import { FuncionarioService } from './../Services/funcionario.service';
-import { ClientsService } from './../Services/clients.service';
+import { FuncionarioService } from '../Services/FuncionarioService/funcionario.service';
+import { ClientsService } from '../Services/ClientService/clients.service';
 import { Client } from './../register-client/client.model';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';

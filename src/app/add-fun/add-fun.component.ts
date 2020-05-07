@@ -1,5 +1,5 @@
-import { CEPService } from './../Services/cep.service';
-import { FuncionarioService } from './../Services/funcionario.service';
+import { CEPService } from '../Services/CepService/cep.service';
+import { FuncionarioService } from '../Services/FuncionarioService/funcionario.service';
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
 import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import { Cep } from './../EdCep/cep.model';

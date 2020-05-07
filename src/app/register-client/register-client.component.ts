@@ -1,4 +1,4 @@
-import { CEPService } from './../Services/cep.service';
+import { CEPService } from '../Services/CepService/cep.service';
 import { Cep } from './../EdCep/cep.model';
 
 
@@ -15,7 +15,7 @@ import { Router } from "@angular/router";
 import * as _moment from 'moment';
 
 import {defaultFormatUtc as _rollupMoment} from 'moment';
-import { ClientsService } from '../Services/clients.service';
+import { ClientsService } from '../Services/ClientService/clients.service';
 import { MatSnackBarConfig, MatSnackBar } from '@angular/material';
 import { FormBuilder, FormGroup } from '@angular/forms';
 

@@ -1,10 +1,10 @@
 import { MatPaginator } from '@angular/material/paginator';
-import { ServicoService } from './../Services/servico.service';
+import { ServicoService } from '../Services/ServicoService/servico.service';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { Peca } from './../add-estoque/produto.model';
 import { Observable, Subscription, observable } from 'rxjs';
-import { ProdutcsService } from './../Services/produtcs.service';
+import { ProdutcsService } from '../Services/ProductService/produtcs.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { EditOsComponent } from '../edit-os/edit-os.component';

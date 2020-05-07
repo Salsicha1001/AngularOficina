@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { ServicoService } from './../Services/servico.service';
+import { ServicoService } from '../Services/ServicoService/servico.service';
 import { Servico } from './servico.model';
 import { MatSnackBarConfig, MatSnackBar } from '@angular/material';
 import {Component, OnInit, ViewChild, Output} from '@angular/core';

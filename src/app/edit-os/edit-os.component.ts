@@ -1,18 +1,19 @@
 import { PagamentoComponent } from './../pagamento/pagamento.component';
-import { CartService } from './../Services/cart.service';
+import { CartService } from '../Services/CartService/cart.service';
 import { Cart } from './cart.model';
 import { AdcPecasComponent } from './../adc-pecas/adc-pecas.component';
 import { MatDialog } from '@angular/material';
 import { Peca } from './../add-estoque/produto.model';
-import { ProdutcsService } from './../Services/produtcs.service';
+import { ProdutcsService } from '../Services/ProductService/produtcs.service';
 
 
 
 import { Router, ActivatedRoute } from '@angular/router';
 import { OrdemService } from './../add-os/OrdemS.model';
-import { OsServiceService } from './../Services/os-service.service';
+import { OsServiceService } from '../Services/OsService/os-service.service';
 import { Component, OnInit } from '@angular/core';
 import { Subscription, Observable } from 'rxjs';
+import { Pagameto } from '../pagamento/Pag.Model';
 
 
 
@@ -34,7 +35,8 @@ select:any
 cart:Cart={
 
   item:[{}],totalPrice:null,totalQtd:null
-} 
+}
+
 total= 0
  newCart:Cart[]=[]
 simpleRqProd$ :Observable<Peca[]>
@@ -197,13 +199,27 @@ teste(){
 
 
 pag(){
-  console.log(this.total)
+  let page:Pagameto={
+  
+    forma:'',
+    pago:null,
+    parcela:null,
+    restante:null,
+    total:null,
+    
+  } 
   const dialogRef = this.dialog.open(PagamentoComponent, {
     width: '600px',
     data: this.total
   });
   dialogRef.afterClosed().subscribe(result => {
-    console.log(result)
+    page.forma = result.forma
+    page.idos =this.id
+    page.parcela = result.parcela
+    page.pago = result.pago
+    page.restante = result.restante
+    page.total = result.total
+    console.log(page)
   })
 
 }

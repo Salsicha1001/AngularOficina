@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Cart } from './../edit-os/cart.model';
+import { Cart } from '../../edit-os/cart.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 

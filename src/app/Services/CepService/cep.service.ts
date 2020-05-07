@@ -1,5 +1,5 @@
 
-import { Cep } from './../EdCep/cep.model';
+import { Cep } from '../../EdCep/cep.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, EventEmitter } from '@angular/core';
 

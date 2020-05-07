@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Peca } from '../add-estoque/produto.model';
+import { Peca } from '../../add-estoque/produto.model';
 
 @Injectable({
   providedIn: 'root'
