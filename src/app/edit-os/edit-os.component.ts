@@ -1,3 +1,4 @@
+import { PageService } from './../Services/PagamentoService/page.service';
 import { PagamentoComponent } from './../pagamento/pagamento.component';
 import { CartService } from '../Services/CartService/cart.service';
 import { Cart } from './cart.model';
@@ -46,7 +47,7 @@ simpleRqProd$ :Observable<Peca[]>
     CLIENTE:'',PLACA:'',MODELO:'',MARCA:'',ANO:null,FUNCIONARIO:'',DATEP:'',DATEI:'',OBS:'',IDCLIENT:'',IDFUNCIONARIO:''
   }
 
-  constructor(private osService: OsServiceService,private cartService:CartService, private dialog:MatDialog, private router: Router,private route: ActivatedRoute,private produtcService: ProdutcsService) {
+  constructor(private osService: OsServiceService,private cartService:CartService, private dialog:MatDialog, private pageService: PageService,private route: ActivatedRoute,private produtcService: ProdutcsService) {
    }
    
 
@@ -104,12 +105,13 @@ saveobs(){
     });
 
     dialogRef.afterClosed().subscribe(result => {
+ 
       let list:Cart={
         id:null,
         item:[{}],totalPrice:null,totalQtd:1
       } 
       var ff = false
-      console.log(this.newCart.length)
+
       if(this.newCart.length ==0){
         for(let k in result){
           list.CODVERIF = result[k].CODVERIF
@@ -133,6 +135,7 @@ saveobs(){
     }
   }
 }
+
 if(ff == false){
   this.newCart.push(list)
   this.cartService.save(list).subscribe()
@@ -213,13 +216,16 @@ pag(){
     data: this.total
   });
   dialogRef.afterClosed().subscribe(result => {
-    page.forma = result.forma
+    if(result.forma !=""){
+    
+   page.forma = result.forma
     page.idos =this.id
     page.parcela = result.parcela
     page.pago = result.pago
     page.restante = result.restante
     page.total = result.total
-    console.log(page)
+    this.pageService.savePag(page).subscribe()
+    }
   })
 
 }

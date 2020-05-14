@@ -22,6 +22,7 @@ export class AdcPecasComponent implements OnInit {
   displayedColumns: string[] = ['name','adicionar'];
   DataTableServ: any;
  obj=[{}]
+ passed:Boolean = false
  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
 adc(i){
@@ -31,6 +32,7 @@ adc(i){
       }
       if(b == false){
          this.obj.push(i)
+         this.passed = true
         }else{
           alert("Selecione um item por vez")
       }
