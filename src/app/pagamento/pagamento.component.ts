@@ -1,3 +1,5 @@
+import { map } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Component, OnInit, Inject } from '@angular/core';
 import { EditOsComponent } from '../edit-os/edit-os.component';
@@ -16,8 +18,9 @@ export class PagamentoComponent implements OnInit {
   pgd:any
   dinheiro:any
   troco=0
+  id;
   
-   constructor(   public dialogRef: MatDialogRef<EditOsComponent>,
+   constructor(   public dialogRef: MatDialogRef<EditOsComponent>,private route: Router,
     @Inject(MAT_DIALOG_DATA) public p:[]) { 
       this.valor = p
     }
@@ -33,6 +36,9 @@ export class PagamentoComponent implements OnInit {
 
   ngOnInit(): void {
       this.res = this.valor
+ 
+this.id = this.route.url
+console.log(this.id)
   }
   onSubmit(){
 

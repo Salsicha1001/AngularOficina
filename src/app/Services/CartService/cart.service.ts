@@ -8,12 +8,15 @@ import { Injectable } from '@angular/core';
 })
 export class CartService {
   readonly url: string = 'http://localhost:3000'
+  private load :Boolean =false
   constructor(private http: HttpClient) { }
 
 
 save(c:Cart):Observable <Cart>{
-  return this.http.post<Cart>(`${this.url}/savecart`, c)
-}
+  if(!this.load){
+    return this.http.post<Cart>(`${this.url}/savecart`, c)
+  }
+  }
 
 
 get(){
