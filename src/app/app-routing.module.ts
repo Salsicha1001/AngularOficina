@@ -8,6 +8,7 @@ import { RegisterClientComponent } from './register-client/register-client.compo
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AddOsComponent } from './add-os/add-os.component';
+import { IndexComponent } from './index/index.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path:'registerfunc', component:AddFunComponent},
   {path:'listos', component:ListOsComponent},
   {path:'registerserv', component:AddServicoComponent},
-  {path:'EditOS/:id', component:EditOsComponent}
+  {path:'EditOS/:id', component:EditOsComponent},
+  {path:'', component:IndexComponent}
 ];
 
 

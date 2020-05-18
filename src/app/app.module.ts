@@ -59,7 +59,8 @@ import { ListOsComponent } from './list-os/list-os.component';
 import { AddServicoComponent } from './add-servico/add-servico.component';
 import { EditOsComponent } from './edit-os/edit-os.component';
 import { AdcPecasComponent } from './adc-pecas/adc-pecas.component';
-import { PagamentoComponent } from './pagamento/pagamento.component'; 
+import { PagamentoComponent } from './pagamento/pagamento.component';
+import { IndexComponent } from './index/index.component'; 
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { PagamentoComponent } from './pagamento/pagamento.component';
     AddServicoComponent,
     EditOsComponent,
     AdcPecasComponent,
-    PagamentoComponent
+    PagamentoComponent,
+    IndexComponent
   ],
   imports: [
     HttpClientModule,
