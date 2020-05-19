@@ -48,9 +48,9 @@ body, html{
 	.prev{left:0;}
 
 	label span{
-		position: absolute;
+		position: relative;
 		font-size: 100pt;
-		top: 50%;
+		top: 35%;
 	 	transform: translateY(-50%);
 	}
 
@@ -115,7 +115,7 @@ body, html{
 	label span { font-size: 50pt; }
 	
 	.prev, .next{
-		width: 15%;
+		width: 5%;
 	}	
 	#nav_slide .dots{
 		width: 12px;
