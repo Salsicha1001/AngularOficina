@@ -5,7 +5,7 @@
             <mat-menu #menu="matMenu">
                 <button mat-menu-item routerLink="/registerclient">Cliente</button>
                 <button mat-menu-item routerLink="/cadastropeca">Peça</button>
-                <button mat-menu-item routerLink="/registerfunc">Funcionario</button>
+                <button mat-menu-item routerLink="/registerfunc">Funcionário</button>
                 <button mat-menu-item routerLink="/registerserv">Serviço</button>
                 
             </mat-menu>
@@ -13,6 +13,7 @@
             <button mat-button [matMenuTriggerFor]="list">Listagem</button>
             <mat-menu #list="matMenu">
                 <button mat-menu-item routerLink="/list">Clientes</button>
+                <button mat-menu-item routerLink="/listos">Funcionários</button>
                
                 
                 
@@ -20,8 +21,9 @@
              <button mat-button [matMenuTriggerFor]="os">Ordem de Serviço</button>
             <mat-menu #os="matMenu">
                 <button mat-menu-item routerLink="/addos">Criar OS</button>
-               <button mat-menu-item routerLink="/listos">Listar OS</button>
-                
+               <button mat-menu-item routerLink="/listos">OS Aberto</button>
+               <button mat-menu-item routerLink="/">OS Negado</button>
+               <button mat-menu-item routerLink="/">OS Finalizados</button>
                 
             </mat-menu>
             

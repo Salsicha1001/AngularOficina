@@ -33,7 +33,7 @@
           </mat-form-field>
           <br>
           <mat-label>Parcelado:R${{res | number:'.2'}}</mat-label>
-       
+          <button mat-mini-fab color="primary" id="saves" [mat-dialog-close]="pag" cdkFocusInitial style="margin-left:90%"><mat-icon>done</mat-icon></button>
       </div>
       <div *ngIf="forma == 'cartaoDebito'">
         <mat-label>Valor Total:R${{valor |number:'.2'}}</mat-label>
@@ -45,6 +45,7 @@
           <mat-label>Restante:R${{res |number:'.2'}}</mat-label>
           <br>
           <mat-label>Troco:R${{troco |number:'.2'}}</mat-label>
+          <button mat-mini-fab color="primary" id="saves" [mat-dialog-close]="pag" cdkFocusInitial style="margin-left:90%"><mat-icon>done</mat-icon></button>
       </div>
            <div *ngIf="forma == 'dinheiro'">
         <mat-label>Valor Total:R${{valor |number:'.2'}}</mat-label>
@@ -56,7 +57,8 @@
           <mat-label>Restante:R${{res |number:'.2'}}</mat-label>
           <br>
           <mat-label>Troco:R${{troco |number:'.2'}}</mat-label>
+          <button mat-mini-fab color="primary" id="saves" [mat-dialog-close]="pag" cdkFocusInitial style="margin-left:90%"><mat-icon>done</mat-icon></button>
       </div>
-      <button mat-mini-fab color="primary" id="saves" [mat-dialog-close]="pag" cdkFocusInitial style="margin-left:60%"><mat-icon>done</mat-icon></button>
+     
 </form>
 </div>

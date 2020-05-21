@@ -37,7 +37,8 @@ cart:Cart={
 
   item:[{}],totalPrice:null,totalQtd:null
 }
-
+pageboll:Boolean = false
+bottonCred:Boolean = false
 total= 0
  newCart:Cart[]=[]
 simpleRqProd$ :Observable<Peca[]>
@@ -46,8 +47,11 @@ simpleRqProd$ :Observable<Peca[]>
   os:OrdemService = {
     CLIENTE:'',PLACA:'',MODELO:'',MARCA:'',ANO:null,FUNCIONARIO:'',DATEP:'',DATEI:'',OBS:'',IDCLIENT:'',IDFUNCIONARIO:''
   }
-
-  constructor(private osService: OsServiceService,private cartService:CartService, private dialog:MatDialog, private pageService: PageService,private route: ActivatedRoute,private produtcService: ProdutcsService) {
+  pages:Pagameto={
+    FORMA:'',PAGO:'',PARCELA:null,TOTAL:null,RESTANTE:null
+  }
+  newPag:Pagameto[]=[]
+  constructor(private osService: OsServiceService,private pagService: PageService,private cartService:CartService, private dialog:MatDialog, private pageService: PageService,private route: ActivatedRoute,private produtcService: ProdutcsService) {
    }
    
 
@@ -55,7 +59,14 @@ simpleRqProd$ :Observable<Peca[]>
   this.des=  this.route.params.subscribe((params:any)=>{
       this.id=  params['id']
     })
-
+    this.pagService.getId(this.id).subscribe((b)=>{
+      console.log(b)
+      for(let key in b){
+        
+        this.bottonCred = b[key].FORMA == 'cartaoCredito'
+        console.log(this.bottonCred)
+      }
+    })
     this.simplereqos$ = this.osService.getid(this.id)
     this.osService.getid(this.id).subscribe((a)=>{
       this.mude = a
@@ -202,13 +213,14 @@ teste(){
 
 
 pag(){
+  if(!this.pageboll){
   let page:Pagameto={
-  
-    forma:'',
-    pago:null,
-    parcela:null,
-    restante:null,
-    total:null,
+    IDOS:"",
+    FORMA:'',
+    PAGO:null,
+    PARCELA:null,
+    RESTANTE:null,
+    TOTAL:null,
     
   } 
   const dialogRef = this.dialog.open(PagamentoComponent, {
@@ -218,16 +230,21 @@ pag(){
   dialogRef.afterClosed().subscribe(result => {
     if(result.forma !=""){
     
-   page.forma = result.forma
-    page.idos =this.id
-    page.parcela = result.parcela
-    page.pago = result.pago
-    page.restante = result.restante
-    page.total = result.total
-    this.pageService.savePag(page).subscribe()
+   page.FORMA = result.forma
+    page.IDOS =this.id
+    page.PARCELA = result.parcela
+    page.PAGO = result.pago
+    page.RESTANTE = result.restante
+    page.TOTAL = result.total
+  this.pageService.savePag(page).subscribe()
+  this.pageboll = true
+  alert("Pagamento salvo com sucesso, Atualize a pagina caso faça um novo salvamento")
     }
   })
 
+  }else{
+    alert("Atualize a pagina")
+  }
 }
 
 

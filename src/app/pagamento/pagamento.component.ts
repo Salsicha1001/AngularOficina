@@ -1,5 +1,3 @@
-import { map } from 'rxjs/operators';
-import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Component, OnInit, Inject } from '@angular/core';
 import { EditOsComponent } from '../edit-os/edit-os.component';
@@ -20,39 +18,39 @@ export class PagamentoComponent implements OnInit {
   troco=0
   id;
   
-   constructor(   public dialogRef: MatDialogRef<EditOsComponent>,private route: Router,
+   constructor(   public dialogRef: MatDialogRef<EditOsComponent>,
     @Inject(MAT_DIALOG_DATA) public p:[]) { 
       this.valor = p
     }
     
     pag:Pagameto={
-      forma:'',
-      pago:null,
-      parcela:null,
-      restante:null,
-      total:null,
+      FORMA:'',
+      PAGO:null,
+      PARCELA:null,
+      RESTANTE:null,
+      TOTAL:null,
       
     }
 
   ngOnInit(): void {
       this.res = this.valor
  
-this.id = this.route.url
-console.log(this.id)
+
   }
   onSubmit(){
 
   }
   divisao(){
     this.res = this.valor/parseInt(this.parcela)
+    this.res = this.res.toFixed(2);
     if(this.res<0){
       this.res = 0
     }
-    this.pag.forma = this.forma
-    this.pag.pago = this.res
-    this.pag.parcela = this.parcela
-    this.pag.total = this.valor
-    this.pag.restante = this.res
+    this.pag.FORMA = this.forma
+    this.pag.PAGO = this.res
+    this.pag.PARCELA = this.parcela
+    this.pag.TOTAL = this.valor
+    this.pag.RESTANTE = 0
   }
   dep(){
     this.troco = 0
@@ -64,11 +62,11 @@ console.log(this.id)
     }else{
     this.troco = 0
     }
-    this.pag.forma = this.forma
-    this.pag.pago = this.pgd
-   
-    this.pag.total = this.valor
-    this.pag.restante = this.res
+    this.pag.FORMA = this.forma
+    this.pag.PAGO = this.res
+  
+    this.pag.TOTAL = this.valor
+    this.pag.RESTANTE = this.res
   }
   dinhe(){
     this.res = this.valor -this.dinheiro
@@ -78,11 +76,11 @@ console.log(this.id)
       this.troco = this.troco *-1
       this.res = 0
     }
-    this.pag.forma = this.forma
-    this.pag.pago = this.dinheiro
-   
-    this.pag.total = this.valor
-    this.pag.restante = this.res
+    this.pag.FORMA = this.forma
+    this.pag.PAGO = this.res
+ 
+    this.pag.TOTAL = this.valor
+    this.pag.RESTANTE = this.res
   }
 
 

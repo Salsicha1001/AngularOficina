@@ -1,9 +1,9 @@
 export interface Pagameto{
     id?:any,
-    idos?:any
-    forma:string
-    parcela:any
-    total:number,
-    restante:number,
-    pago:string
+    IDOS?:any
+    FORMA:string
+    PARCELA:any
+    TOTAL:number,
+    RESTANTE:number,
+    PAGO:string
 }
