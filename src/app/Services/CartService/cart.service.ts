@@ -24,7 +24,8 @@ get(){
 }
 
 delete(s:Cart){
-  return this.http.delete(`${this.url}/deletecart/${s.CODVERIF}`)
+  
+  return this.http.delete(`${this.url}/deletecart/${s.CODVERIF}/${s.idos}`)
 }
 addQtd(c:Cart): Observable<Cart>{
 

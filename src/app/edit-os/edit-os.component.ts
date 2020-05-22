@@ -151,6 +151,7 @@ if(ff == false){
   this.newCart.push(list)
   this.cartService.save(list).subscribe()
   this.total += list.totalPrice
+ 
     }
   })
       
