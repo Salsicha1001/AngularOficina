@@ -6,9 +6,6 @@ import { AdcPecasComponent } from './../adc-pecas/adc-pecas.component';
 import { MatDialog } from '@angular/material';
 import { Peca } from './../add-estoque/produto.model';
 import { ProdutcsService } from '../Services/ProductService/produtcs.service';
-
-
-
 import { Router, ActivatedRoute } from '@angular/router';
 import { OrdemService } from './../add-os/OrdemS.model';
 import { OsServiceService } from '../Services/OsService/os-service.service';
@@ -26,32 +23,31 @@ import { Pagameto } from '../pagamento/Pag.Model';
 
 
 export class EditOsComponent implements OnInit {
-  id;
+id;
 mude:any
-
 select:any
- peca:Peca={
+peca:Peca={
    name:'',codBarras:null,marca:'',precoDeCompra:null,qtd:null,Empresa:'',data:new Date(),precoDeVenda:null,lucro:null
  }
 cart:Cart={
-
   item:[{}],totalPrice:null,totalQtd:null
 }
-pageboll:Boolean = false
+
 bottonCred:Boolean = false
 total= 0
- newCart:Cart[]=[]
+newCart:Cart[]=[]
 simpleRqProd$ :Observable<Peca[]>
-  des:Subscription;
-  simplereqos$ :Observable<OrdemService>
-  os:OrdemService = {
+des:Subscription;
+simplereqos$ :Observable<OrdemService>
+os:OrdemService = {
     CLIENTE:'',PLACA:'',MODELO:'',MARCA:'',ANO:null,FUNCIONARIO:'',DATEP:'',DATEI:'',OBS:'',IDCLIENT:'',IDFUNCIONARIO:''
   }
-  pages:Pagameto={
-    FORMA:'',PAGO:'',PARCELA:null,TOTAL:null,RESTANTE:null
+pages:Pagameto={
+    FORMA:'',PAGO:null,PARCELA:null,TOTAL:null,RESTANTE:null
   }
-  newPag:Pagameto[]=[]
-  constructor(private osService: OsServiceService,private pagService: PageService,private cartService:CartService, private dialog:MatDialog, private pageService: PageService,private route: ActivatedRoute,private produtcService: ProdutcsService) {
+newPag:Pagameto[]=[]
+totalpag:any
+constructor(private osService: OsServiceService,private pagService: PageService,private cartService:CartService, private dialog:MatDialog, private pageService: PageService,private route: ActivatedRoute,private produtcService: ProdutcsService) {
    }
    
 
@@ -61,11 +57,20 @@ simpleRqProd$ :Observable<Peca[]>
     })
     this.pagService.getId(this.id).subscribe((b)=>{
       console.log(b)
+      if(b.length!=0){
       for(let key in b){
         
-        this.bottonCred = b[key].FORMA == 'cartaoCredito'
-        console.log(this.bottonCred)
+        if(b[key].FORMA == 'cartaoCredito'){
+          this.totalpag = b[key].PAGO * b[key].PARCELA
+          if(this.totalpag == b[key].TOTAL){
+            this.bottonCred = true
+          }
+        }else{
+          this.newPag.push(b[key])
+        }
+       
       }
+    }
     })
     this.simplereqos$ = this.osService.getid(this.id)
     this.osService.getid(this.id).subscribe((a)=>{
@@ -108,11 +113,10 @@ saveobs(){
   alert("Foi alterado com sucesso!")
 }
   add(){
-   
-    
     const dialogRef = this.dialog.open(AdcPecasComponent, {
       width: '800px',
-      data: []
+      data: [],
+      disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -214,7 +218,7 @@ teste(){
 
 
 pag(){
-  if(!this.pageboll){
+
   let page:Pagameto={
     IDOS:"",
     FORMA:'',
@@ -224,29 +228,30 @@ pag(){
     TOTAL:null,
     
   } 
+  
   const dialogRef = this.dialog.open(PagamentoComponent, {
     width: '600px',
-    data: this.total
+    data: this.total,
+    disableClose: true 
   });
   dialogRef.afterClosed().subscribe(result => {
-    if(result.forma !=""){
-    
-   page.FORMA = result.forma
+   
+  
+    page.FORMA = result.FORMA
     page.IDOS =this.id
-    page.PARCELA = result.parcela
-    page.PAGO = result.pago
-    page.RESTANTE = result.restante
-    page.TOTAL = result.total
-  this.pageService.savePag(page).subscribe()
-  this.pageboll = true
-  alert("Pagamento salvo com sucesso, Atualize a pagina caso faça um novo salvamento")
-    }
+    page.PARCELA = result.PARCELA
+    page.PAGO = result.PAGO
+    page.RESTANTE = result.RESTANTE
+    page.TOTAL = result.TOTAL
+    this.pageService.savePag(page).subscribe()
+  
   })
 
-  }else{
-    alert("Atualize a pagina")
-  }
+  
 }
+
+
+
 
 
   ngOnDestroy(): void {

@@ -5,5 +5,5 @@ export interface Pagameto{
     PARCELA:any
     TOTAL:number,
     RESTANTE:number,
-    PAGO:string
+    PAGO:number
 }

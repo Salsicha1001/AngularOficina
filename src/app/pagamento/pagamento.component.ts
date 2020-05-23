@@ -63,7 +63,7 @@ export class PagamentoComponent implements OnInit {
     this.troco = 0
     }
     this.pag.FORMA = this.forma
-    this.pag.PAGO = this.res
+    this.pag.PAGO = this.pgd
   
     this.pag.TOTAL = this.valor
     this.pag.RESTANTE = this.res
@@ -77,7 +77,7 @@ export class PagamentoComponent implements OnInit {
       this.res = 0
     }
     this.pag.FORMA = this.forma
-    this.pag.PAGO = this.res
+    this.pag.PAGO = this.dinheiro
  
     this.pag.TOTAL = this.valor
     this.pag.RESTANTE = this.res
