@@ -21,6 +21,16 @@ export class OsServiceService {
     return   this.http.get<OrdemService[]>(this.url1)
   
 }
+getNeg(): Observable<OrdemService[]> {
+ 
+  return   this.http.get<OrdemService[]>(`${this.url}/listosneg/`)
+
+}
+getFin(): Observable<OrdemService[]> {
+ 
+  return   this.http.get<OrdemService[]>(`${this.url}/listosfin/`)
+
+}
   getid(i):Observable<OrdemService>{
     
   return this.http.get<OrdemService>(`${this.url}/listos/`+i)

@@ -29,7 +29,7 @@ delete(s:Cart){
 }
 addQtd(c:Cart): Observable<Cart>{
 
-  return this.http.patch<Cart>(`${this.url}/addqtd/${c.CODVERIF}`, c)
+  return this.http.patch<Cart>(`${this.url}/addqtd/${c.CODVERIF}/${c.idos}/${c.id}`, c)
  }
 
 }

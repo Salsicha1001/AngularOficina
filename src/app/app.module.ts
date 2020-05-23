@@ -60,7 +60,9 @@ import { AddServicoComponent } from './add-servico/add-servico.component';
 import { EditOsComponent } from './edit-os/edit-os.component';
 import { AdcPecasComponent } from './adc-pecas/adc-pecas.component';
 import { PagamentoComponent } from './pagamento/pagamento.component';
-import { IndexComponent } from './index/index.component'; 
+import { IndexComponent } from './index/index.component';
+import { OsNegadoComponent } from './os-negado/os-negado.component';
+import { OsFinalizadoComponent } from './os-finalizado/os-finalizado.component'; 
 
 @NgModule({
   declarations: [
@@ -78,7 +80,9 @@ import { IndexComponent } from './index/index.component';
     EditOsComponent,
     AdcPecasComponent,
     PagamentoComponent,
-    IndexComponent
+    IndexComponent,
+    OsNegadoComponent,
+    OsFinalizadoComponent
   ],
   imports: [
     HttpClientModule,

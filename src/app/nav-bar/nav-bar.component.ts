@@ -19,6 +19,8 @@ export class NavBarComponent implements OnInit {
     this.router.navigate(['/listos'])
     this.router.navigate(['/registerfunc'])
     this.router.navigate(['/registerserv'])
+    this.router.navigate(['/listosneg'])
+    this.router.navigate(['/listosfin'])
 }
 
 }

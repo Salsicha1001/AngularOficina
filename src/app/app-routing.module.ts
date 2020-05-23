@@ -1,3 +1,5 @@
+import { OsFinalizadoComponent } from './os-finalizado/os-finalizado.component';
+import { OsNegadoComponent } from './os-negado/os-negado.component';
 import { EditOsComponent } from './edit-os/edit-os.component';
 import { AddServicoComponent } from './add-servico/add-servico.component';
 import { ListOsComponent } from './list-os/list-os.component';
@@ -20,7 +22,9 @@ const routes: Routes = [
   {path:'listos', component:ListOsComponent},
   {path:'registerserv', component:AddServicoComponent},
   {path:'EditOS/:id', component:EditOsComponent},
-  {path:'', component:IndexComponent}
+  {path:'', component:IndexComponent},
+  {path:'listosneg', component:OsNegadoComponent},
+  {path:'listosfin', component:OsFinalizadoComponent}
 ];
 
 

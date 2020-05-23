@@ -47,6 +47,8 @@ pages:Pagameto={
   }
 newPag:Pagameto[]=[]
 totalpag:any
+novoPag:boolean = false
+  fin: boolean= false;
 constructor(private osService: OsServiceService,private pagService: PageService,private cartService:CartService, private dialog:MatDialog, private pageService: PageService,private route: ActivatedRoute,private produtcService: ProdutcsService) {
    }
    
@@ -56,8 +58,8 @@ constructor(private osService: OsServiceService,private pagService: PageService,
       this.id=  params['id']
     })
     this.pagService.getId(this.id).subscribe((b)=>{
-      console.log(b)
       if(b.length!=0){
+        this.novoPag = false
       for(let key in b){
         
         if(b[key].FORMA == 'cartaoCredito'){
@@ -71,12 +73,20 @@ constructor(private osService: OsServiceService,private pagService: PageService,
        
       }
     }
+    
+    if(b.length == 0 ){
+      this.novoPag = true
+    }
+   
     })
     this.simplereqos$ = this.osService.getid(this.id)
     this.osService.getid(this.id).subscribe((a)=>{
       this.mude = a
     
     this.select = a.STATUS
+    if(this.select == 'Finalizado'){
+      this.fin = true
+    }
     })
      this.cartService.get().subscribe((c)=>{
        
@@ -106,11 +116,17 @@ constructor(private osService: OsServiceService,private pagService: PageService,
       console.log(this.total)
     })
     console.log(this.newCart)
+
+    
   }
 
 saveobs(){
   this.osService.eidtObs(this.mude).subscribe()
   alert("Foi alterado com sucesso!")
+}
+pagamentos(){
+
+
 }
   add(){
     const dialogRef = this.dialog.open(AdcPecasComponent, {
@@ -155,7 +171,7 @@ if(ff == false){
   this.newCart.push(list)
   this.cartService.save(list).subscribe()
   this.total += list.totalPrice
- 
+  window.location.reload();
     }
   })
       
@@ -186,6 +202,19 @@ teste(){
   this.osService.patchStts(this.mude).subscribe()
 }
 
+aut(){
+  let r = 0
+  for(let key in this.newPag){
+    r+= this.newPag[key].PAGO
+  }
+  if(this.total >= r){
+    this.mude.STATUS = 'Finalizado'
+    this.osService.patchStts(this.mude).subscribe()
+  }else{
+    this.mude.STATUS = 'Entregue'
+    this.osService.patchStts(this.mude).subscribe()
+  }
+}
   removeqtd(i){
 
     for(let key in this.newCart){
@@ -228,12 +257,22 @@ pag(){
     TOTAL:null,
     
   } 
+  var r = 0
+  var a 
+  if(this.novoPag == false){
+  for(let key in this.newPag){
+     r += this.newPag[key].PAGO
+  }
+  a = this.total
+  this.total -= r
+}
   
   const dialogRef = this.dialog.open(PagamentoComponent, {
     width: '600px',
     data: this.total,
     disableClose: true 
   });
+  this.total = a
   dialogRef.afterClosed().subscribe(result => {
    
   
@@ -242,11 +281,11 @@ pag(){
     page.PARCELA = result.PARCELA
     page.PAGO = result.PAGO
     page.RESTANTE = result.RESTANTE
-    page.TOTAL = result.TOTAL
+    page.TOTAL = this.total
     this.pageService.savePag(page).subscribe()
-  
+    this.aut()
   })
-
+    
   
 }
 

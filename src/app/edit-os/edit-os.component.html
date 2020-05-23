@@ -35,6 +35,7 @@
           <mat-label>Situação</mat-label>
           <mat-select [(value)]="select" (selectionChange)="teste()">
             <mat-option value="Finalizado">Finalizado</mat-option>
+            <mat-option value="Entregue">Entregue</mat-option>
               <mat-option value="Aprovado">Aprovado</mat-option>
               <mat-option value="Espera">Espera</mat-option>
               <mat-option value="Negado">Negado</mat-option>
@@ -70,8 +71,11 @@
   </table>
 <mat-card><div style=" display: flex;   justify-content: space-between;">
   Total: R${{total |number:'.2'}}
-  <button mat-raised-button [disabled]="bottonCred"  style="margin-left: 15%;  background-color: rgb(87, 212, 87); color: white;" (click)="pag()">Pagamento</button>
+ 
+  <button mat-raised-button   style="margin-left: 15%;  background-color: rgb(87, 212, 87); color: white;" (click)="pag()">Pagamento</button>
 </div>
+  
+<button mat-raised-button *ngIf="fin== true"  style="margin-top: 1%; margin-left: 86%;"  (click)="pagamentos()">Historico de Pagamento</button>
 </mat-card>
 </mat-card>
 
