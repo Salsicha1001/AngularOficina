@@ -2,7 +2,21 @@ mat-form-field{
     margin-right: 20px;
     margin-left: 20px;
 }
-
+mat-radio-button{
+    margin-right: 50px;
+    margin-left: 50px;
+}
+h2{
+    color:#3F51B5
+    
+}
+h3{
+    color:#3F51B5;
+}
+button{
+    margin-right: 10px;
+    margin-left: 0px;
+}
 .snack_ok{
     background: darkseagreen;
     color: black;

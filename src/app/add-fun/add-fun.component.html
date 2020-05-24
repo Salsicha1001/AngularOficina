@@ -1,9 +1,7 @@
-<div class="mat-card" style=" border: 1px solid;
-padding: 10px;
-box-shadow: 5px 10px 8px 10px #888888;
-margin-top: 2px;">
+<div class="mat-card" style=" border: 0px solid;
+padding: 60px;">
 
-<h2>Cadastro de Funcionario:</h2>
+<h2>Cadastro de Funcionario</h2>
 <form (ngSubmit)="onSubmit()" #formFun="ngForm"  >
 
 <mat-form-field appearance="legacy">
@@ -51,7 +49,7 @@ margin-top: 2px;">
   <mat-hint>Complemento da casa</mat-hint>
   </mat-form-field>
 <button mat-raised-button color="primary"style="margin-left:5%" [disabled]="!formFun.valid" >Salvar</button>
-<button mat-raised-button type="reset" color=""style="margin-left:5px; background-color:yellow;">Limpar</button>
+<button mat-raised-button type="reset" color=""style="margin-left:5px; background-color:#e00000">Limpar</button>
 </form>
 
 </div>
