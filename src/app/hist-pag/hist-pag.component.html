@@ -1,0 +1,37 @@
+<h1>Historico de Pagamento</h1>
+<mat-card>
+<mat-table #Table [dataSource]="DataTable">  
+
+       
+
+    <ng-container matColumnDef="Forma">  
+        <mat-header-cell *matHeaderCellDef> Forma  </mat-header-cell>  
+        <mat-cell *matCellDef="let c">{{c.FORMA}} </mat-cell>  
+    </ng-container>  
+    <ng-container matColumnDef="Parcela" >  
+        <mat-header-cell *matHeaderCellDef> Parcela  </mat-header-cell>  
+        <mat-cell *matCellDef="let c"> {{c.PARCELA}}x </mat-cell>  
+    </ng-container>  
+    <ng-container matColumnDef="Valor Total">  
+        <mat-header-cell *matHeaderCellDef>Valor Total</mat-header-cell>  
+        <mat-cell *matCellDef="let c" style="    margin-left: -3%;
+        margin-right: 3%;"> R${{c.TOTAL}} </mat-cell>  
+    </ng-container> 
+    <ng-container matColumnDef="Pago">  
+        <mat-header-cell *matHeaderCellDef> Pago</mat-header-cell>  
+        <mat-cell *matCellDef="let c"> R${{c.PAGO}} </mat-cell>  
+    </ng-container>  
+    <ng-container matColumnDef="Restante">  
+        <mat-header-cell *matHeaderCellDef>Restante </mat-header-cell>  
+        <mat-cell *matCellDef="let c"> R${{c.RESTANTE}} </mat-cell>  
+    </ng-container> 
+ 
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>  
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>  
+</mat-table>  
+
+<!-- To use pagination in DataTable  -->  
+
+<mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">  
+</mat-paginator>  
+    </mat-card>

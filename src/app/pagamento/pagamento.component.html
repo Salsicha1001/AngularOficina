@@ -5,13 +5,13 @@
         <mat-label>Foma de Pagamento</mat-label>
         <mat-select [(ngModel)]="forma" name="forma">
        
-            <mat-option value="dinheiro">Dinheiro</mat-option>
-            <mat-option value="cartaoDebito">Cartão de Débito</mat-option>
-            <mat-option value="cartaoCredito">Cartão de Crédito</mat-option>
+            <mat-option value="Dinheiro">Dinheiro</mat-option>
+            <mat-option value="Cartão de Débito">Cartão de Débito</mat-option>
+            <mat-option value="Cartão de Crédito">Cartão de Crédito</mat-option>
     
         </mat-select>
       </mat-form-field>
-      <div *ngIf="forma == 'cartaoCredito'">
+      <div *ngIf="forma == 'Cartão de Crédito'">
           <mat-label>Valor Total:R${{valor |number:'.2'}}</mat-label>
         <mat-form-field style="margin-left: 15px;">
             <mat-label>Parcelas</mat-label>
@@ -35,7 +35,7 @@
           <mat-label>Parcelado:R${{res | number:'.2'}}</mat-label>
           <button mat-mini-fab color="primary" id="saves" [mat-dialog-close]="pag" cdkFocusInitial style="margin-left:90%"><mat-icon>done</mat-icon></button>
       </div>
-      <div *ngIf="forma == 'cartaoDebito'">
+      <div *ngIf="forma == 'Cartão de Débito'">
         <mat-label>Valor Total:R${{valor |number:'.2'}}</mat-label>
         <mat-form-field class="legacy" style="margin-left:5%">
             <mat-label>Pago</mat-label>
@@ -47,7 +47,7 @@
           <mat-label>Troco:R${{troco |number:'.2'}}</mat-label>
           <button mat-mini-fab color="primary" id="saves" [mat-dialog-close]="pag" cdkFocusInitial style="margin-left:90%"><mat-icon>done</mat-icon></button>
       </div>
-           <div *ngIf="forma == 'dinheiro'">
+           <div *ngIf="forma == 'Dinheiro'">
         <mat-label>Valor Total:R${{valor |number:'.2'}}</mat-label>
         <mat-form-field class="legacy" style="margin-left:5%">
             <mat-label>Pago</mat-label>

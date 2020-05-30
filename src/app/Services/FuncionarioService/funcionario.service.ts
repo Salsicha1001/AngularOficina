@@ -1,7 +1,8 @@
+import { FUNCIO } from './../../add-fun/Funcionario.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { FUNCIO } from '../../add-fun/Funcionario.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -21,11 +22,10 @@ export class FuncionarioService {
       get(): Observable<FUNCIO[]> {
        
         return  this.http.get<FUNCIO[]>(`${this.url}/listfun`)
-       
-     
-    
  
     }
 
-    
+    delet(p:FUNCIO){
+      return this.http.delete(`${this.url}/deletfun/${p.id}`)
+    }
 }

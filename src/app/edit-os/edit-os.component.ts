@@ -1,3 +1,4 @@
+import { HistPagComponent } from './../hist-pag/hist-pag.component';
 import { PageService } from './../Services/PagamentoService/page.service';
 import { PagamentoComponent } from './../pagamento/pagamento.component';
 import { CartService } from '../Services/CartService/cart.service';
@@ -125,7 +126,14 @@ saveobs(){
   alert("Foi alterado com sucesso!")
 }
 pagamentos(){
-
+  const dialogRef = this.dialog.open(HistPagComponent, {
+    width: '800px',
+    data: this.id,
+  
+  });
+  dialogRef.afterClosed().subscribe(result => {
+    
+  })
 
 }
   add(){

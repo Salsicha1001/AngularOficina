@@ -1,3 +1,5 @@
+import { RelatorioComponent } from './relatorio/relatorio.component';
+import { ListFunComponent } from './list-fun/list-fun.component';
 import { OsFinalizadoComponent } from './os-finalizado/os-finalizado.component';
 import { OsNegadoComponent } from './os-negado/os-negado.component';
 import { EditOsComponent } from './edit-os/edit-os.component';
@@ -24,7 +26,9 @@ const routes: Routes = [
   {path:'EditOS/:id', component:EditOsComponent},
   {path:'', component:IndexComponent},
   {path:'listosneg', component:OsNegadoComponent},
-  {path:'listosfin', component:OsFinalizadoComponent}
+  {path:'listosfin', component:OsFinalizadoComponent},
+  {path:'listfun', component:ListFunComponent},
+  {path:'relatorio', component:RelatorioComponent}
 ];
 
 

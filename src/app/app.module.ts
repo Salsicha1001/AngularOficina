@@ -62,7 +62,11 @@ import { AdcPecasComponent } from './adc-pecas/adc-pecas.component';
 import { PagamentoComponent } from './pagamento/pagamento.component';
 import { IndexComponent } from './index/index.component';
 import { OsNegadoComponent } from './os-negado/os-negado.component';
-import { OsFinalizadoComponent } from './os-finalizado/os-finalizado.component'; 
+import { OsFinalizadoComponent } from './os-finalizado/os-finalizado.component';
+import { ListFunComponent } from './list-fun/list-fun.component';
+import { HistPagComponent } from './hist-pag/hist-pag.component';
+import { RelatorioComponent } from './relatorio/relatorio.component';
+import { RelatorioFuncionarioComponent } from './relatorio-funcionario/relatorio-funcionario.component'; 
 
 @NgModule({
   declarations: [
@@ -82,7 +86,11 @@ import { OsFinalizadoComponent } from './os-finalizado/os-finalizado.component';
     PagamentoComponent,
     IndexComponent,
     OsNegadoComponent,
-    OsFinalizadoComponent
+    OsFinalizadoComponent,
+    ListFunComponent,
+    HistPagComponent,
+    RelatorioComponent,
+    RelatorioFuncionarioComponent
   ],
   imports: [
     HttpClientModule,
