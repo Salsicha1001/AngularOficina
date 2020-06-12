@@ -62,6 +62,7 @@ export class RelatorioComponent implements OnInit {
     this.dataFinal = finaly
    }
 onSubmit(){
+ 
   console.log(this.dataInicial ,this.dataFinal)
   const dialogRef = this.dialog.open(RelatorioFuncionarioComponent, {
     width: '800px',

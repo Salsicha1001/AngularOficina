@@ -97,10 +97,10 @@ constructor(private osService: OsServiceService,private pagService: PageService,
           let li:Cart={
             id:c[key].id,
                     idos:this.id,item:[{NOME:c[key].NOME,PRECODEVENDA:c[key].PRECODEVENDA,
-                     CODVERIF:c[key].CODVERIF}],totalPrice:c[key].totalPrice,
+                     CODVERIF:c[key].CODVERIF, GANHODONO:c[key].LUCRO, GANHOFUN:c[key].GANHOFUN}],totalPrice:c[key].totalPrice,
                      totalQtd:c[key].totalQtd,CODVERIF:c[key].CODVERIF
                   } 
-
+                
           this.newCart.push(li)
         }  
         
@@ -114,7 +114,7 @@ constructor(private osService: OsServiceService,private pagService: PageService,
       for(var i = 0; i<soma.length; i++){
         this.total += soma[i]
       }
-      console.log(this.total)
+     // console.log(this.total)
     })
     console.log(this.newCart)
 
@@ -128,7 +128,7 @@ saveobs(){
 pagamentos(){
   const dialogRef = this.dialog.open(HistPagComponent, {
     width: '800px',
-    data: this.id,
+    data: [this.id, this.total],
   
   });
   dialogRef.afterClosed().subscribe(result => {
@@ -177,9 +177,10 @@ pagamentos(){
 
 if(ff == false){
   this.newCart.push(list)
-  this.cartService.save(list).subscribe()
+ 
+ this.cartService.save(list).subscribe()
   this.total += list.totalPrice
-  window.location.reload();
+ window.location.reload();
     }
   })
       
@@ -200,8 +201,11 @@ if(ff == false){
       if(this.newCart[key]== i){
         this.newCart[key].totalQtd++
        this.newCart[key].totalPrice =v *this.newCart[key].totalQtd
+       this.newCart[key].item[key].GANHODONO +=this.newCart[key].item[key].GANHODONO
+       this.newCart[key].item[key].GANHOFUN +=this.newCart[key].item[key].GANHOFUN
        this.cartService.addQtd(i).subscribe()
        this.total += v
+       console.log(i)
       }
     }
   }
@@ -239,6 +243,8 @@ aut(){
         if(this.newCart[key].totalQtd>1){
         this.newCart[key].totalQtd--
         this.newCart[key].totalPrice -=v
+        this.newCart[key].item[key].GANHODONO -=this.newCart[key].item[key].GANHODONO
+        this.newCart[key].item[key].GANHOFUN -=this.newCart[key].item[key].GANHOFUN
         this.cartService.addQtd(i).subscribe()
         this.total -= v
         }else{

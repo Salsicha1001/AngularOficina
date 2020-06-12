@@ -9,4 +9,5 @@ export interface Peca{
     marca:string;
     lucro:number;
     precoDeVenda:number;
+    ganho?:number
 }

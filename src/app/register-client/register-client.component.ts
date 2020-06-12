@@ -88,36 +88,7 @@ export class RegisterClientComponent implements OnInit {
   }
   
 
-  /*{save(Name:string, Cpf:number,Date:string,  Tell:number, Email:string, people:string){
 
-   // console.log(this.finaly)
-    let c = {Name, Cpf, Tell, Date:this.finaly,Email,people}
-    console.log(c)
-    this.cliente.Name=""
-    this.cliente.Tell= null
-    this.cliente.Cpf = null
-    this.cliente.Date=""
-    this.cliente.Email=""
-    
-  this.clientsService.saveClient(c).subscribe((c:Client)=>{
-
-     this.newClient.push(c)
- 
-    },
-    (err)=>{
-      console.error(err)
-      let config = new MatSnackBarConfig();
-     config.duration= 2000;
-    if(err.status == 0){
-      config.panelClass=['snack_error'];
-      this.snackBar.open("Deu um erro ao conecta ao server")
-     }
-      
-    })
-
-  }}
-*/
-  
 
 
 
@@ -138,7 +109,7 @@ onSubmit(){
       config.duration= 2000;
      if(err.status == 0){
        config.panelClass=['snack_error'];
-       this.snackBar.open("Deu um erro ao conecta ao server")
+       this.snackBar.open("Ocorreu um erro de conexão com o server")
       } 
      }) 
   
