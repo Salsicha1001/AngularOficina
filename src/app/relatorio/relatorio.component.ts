@@ -1,3 +1,4 @@
+import { FuncionarioService } from './../Services/FuncionarioService/funcionario.service';
 import { RelatorioFuncionarioComponent } from './../relatorio-funcionario/relatorio-funcionario.component';
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
 import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
@@ -41,11 +42,21 @@ export const MY_FORMATS = {
 export class RelatorioComponent implements OnInit {
   datIn:any
   datFin:any
+  FUNCIONARIO:any
   dataInicial:any
   dataFinal:any
-  constructor( private dialog:MatDialog) { }
+  funcion$: any;
+  nameFuncio:string[]=[]
+  constructor( private dialog:MatDialog, private FuncionarioService:FuncionarioService) { }
 
   ngOnInit(): void {
+    this.funcion$ = this.FuncionarioService.get()
+    this.funcion$.subscribe((f)=>{
+      for(let key in f){
+        this.nameFuncio[key] = f[key].id+' '+f[key].NOME
+      }
+  
+    })
   }
   addEvent($event){
    var dia = this.datIn._i.date
@@ -66,7 +77,7 @@ onSubmit(){
   console.log(this.dataInicial ,this.dataFinal)
   const dialogRef = this.dialog.open(RelatorioFuncionarioComponent, {
     width: '800px',
-    data: [this.dataInicial , this.dataFinal],
+    data: [this.FUNCIONARIO,this.dataInicial , this.dataFinal],
 
   });
   dialogRef.afterClosed().subscribe(result => {

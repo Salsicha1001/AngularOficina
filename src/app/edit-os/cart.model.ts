@@ -5,7 +5,8 @@ export interface Cart{
     item:[{PRECODEVENDA?:number,NOME?:string, CODVERIF?:number, GANHOFUN?:number, GANHODONO?:number}],
     totalQtd:number,
     totalPrice:number,
-    CODVERIF?:number
+    CODVERIF?:number,
+    GANHOFUN?:number
     
 
 }
