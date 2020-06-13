@@ -1,5 +1,9 @@
 mat-form-field{
-    padding: 7px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+mat-card-title{
+  color: #3F51B5;
 }
 
 table {

@@ -1,5 +1,5 @@
 <form (ngSubmit)="onSubmit()" #formOS="ngForm">
-    <h3>Pagamento dos Funcionarios</h3>
+    <h2>Pagamento dos Funcionarios</h2>
     <mat-form-field appearance="legacy">
         <mat-label>Data Inicial</mat-label>
         <input matInput [matDatepicker]="picker" (dateInput)="addEvent($event)"name="datIn" [(ngModel)]="datIn" required>

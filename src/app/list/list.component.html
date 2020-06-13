@@ -1,6 +1,8 @@
- <div class="example-table-container">
- <mat-table #Table [dataSource]="DataTable" class="example-table"
->  
+<mat-card style=" border: 0px solid;
+padding: 20px;">
+ <h1>Clientes</h1>
+ <mat-card>
+ <mat-table #Table [dataSource]="DataTable">  
 
   <ng-container matColumnDef="id">  
     <mat-header-cell *matHeaderCellDef style="margin-right:-5%"><mat-icon>account_circle</mat-icon></mat-header-cell>  
@@ -45,5 +47,5 @@
 <!-- To use pagination in DataTable  -->  
 
 <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">  
-</mat-paginator>  
-</div>
+</mat-paginator>
+    </mat-card> 

@@ -16,7 +16,7 @@ body, html{
 		position: relative;
 		width: 100%;
 		height: 10%;
-		padding-bottom: 38%;
+		padding-bottom: 41%;
 	    user-select: none;
 		
 	}
@@ -55,8 +55,8 @@ body, html{
 	}
 
 	.prev:hover, .next:hover{
-		transition: .3s;
-		background-color: rgba(88, 88, 89,.8);
+		transition: .1s;
+		background-color: rgba(244, 244, 244,.2);
 		color: #ffffff; 
 	}
 
@@ -79,7 +79,7 @@ body, html{
 	border-radius: 100%;
 	display: inline-block;
 	background-color: rgba(0, 0, 0, 0.6);
-	transition: .4s;
+	transition: .1s;
 }
 
 #nav_slide .dots:hover {
@@ -92,7 +92,7 @@ body, html{
 
 	#i1:checked ~ #one  ,
 	#i2:checked ~ #two  
-	{z-index: 9; animation: scroll 1s ease-in-out;}
+	{z-index: 9; animation: scroll 0s ease-in-out;}
 
 	#i1:checked  ~  #nav_slide #dot1,
 	#i2:checked  ~  #nav_slide #dot2

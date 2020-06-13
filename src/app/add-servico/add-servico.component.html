@@ -1,7 +1,5 @@
-<mat-card style=" border: 1px solid;
-padding: 10px;
-box-shadow: 5px 10px 8px 10px #888888;
-margin-top: 2px;">
+<mat-card style=" border: 0px solid;
+padding: 10px;">
     <mat-card-title>Cadastro de Serviço:</mat-card-title>
     <form (ngSubmit)="onSubmit()" #formServico="ngForm" >
         <mat-form-field appearance="legacy">
@@ -54,7 +52,7 @@ margin-top: 2px;">
             <mat-cell *matCellDef="let c"> R${{c.GANHODONO | number : '.2'}} </mat-cell>  
         </ng-container>  
         <ng-container matColumnDef="ganhoFuncionario">  
-            <mat-header-cell *matHeaderCellDef> Funciorio Recebe </mat-header-cell>  
+            <mat-header-cell *matHeaderCellDef> Funcionario Recebe </mat-header-cell>  
             <mat-cell *matCellDef="let c"> R${{c.GANHOFUN | number : '.2'}} </mat-cell>  
         </ng-container>
         <ng-container matColumnDef="delete" >  

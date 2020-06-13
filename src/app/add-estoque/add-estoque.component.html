@@ -1,7 +1,5 @@
-<mat-card style=" border: 1px solid;
-padding: 10px;
-box-shadow: 5px 10px 8px 10px #888888;
-margin-top: 2px;">
+<mat-card style=" border: 0px solid;
+padding: 14px;">
     <mat-card-title>Cadastro de Peça:</mat-card-title>
     <form (ngSubmit)="onSubmit()" #formPeca="ngForm" >
         <mat-form-field appearance="legacy">
@@ -79,7 +77,7 @@ margin-top: 2px;">
             <mat-cell *matCellDef="let c"> {{c.COD_BARRA}} </mat-cell>  
         </ng-container> 
         <ng-container matColumnDef="precoDeCompra">  
-            <mat-header-cell *matHeaderCellDef> Preço da Compra Uni  </mat-header-cell>  
+            <mat-header-cell *matHeaderCellDef>Preço da Compra Unitária</mat-header-cell>  
             <mat-cell *matCellDef="let c"> R${{c.PRECODECOMPRA | number : '.2'}} </mat-cell>  
         </ng-container>  
         <ng-container matColumnDef="lucro">  
