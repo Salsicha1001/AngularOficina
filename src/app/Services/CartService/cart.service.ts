@@ -22,7 +22,9 @@ save(c:Cart):Observable <Cart>{
 get(){
   return this.http.get<Cart>(`${this.url}/getcart`)
 }
-
+getcart(i){
+  return this.http.get<Cart[]>(`${this.url}/getcartsrel/${i}`)
+}
 delete(s:Cart){
   
   return this.http.delete(`${this.url}/deletecart/${s.CODVERIF}/${s.idos}`)

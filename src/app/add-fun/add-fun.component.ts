@@ -86,7 +86,7 @@ export class AddFunComponent implements OnInit {
      config.duration= 2000;
     if(err.status == 0){
       config.panelClass=['snack_error'];
-      this.snackBar.open("Deu um erro ao conecta ao server")
+      this.snackBar.open("Ocorreu um erro durante a conexão ao server")
      } 
   })
 

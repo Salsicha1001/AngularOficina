@@ -92,7 +92,7 @@ body, html{
 
 	#i1:checked ~ #one  ,
 	#i2:checked ~ #two  
-	{z-index: 9; animation: scroll 0s ease-in-out;}
+	{z-index: 9; animation: scroll 1s ease-in-out;}
 
 	#i1:checked  ~  #nav_slide #dot1,
 	#i2:checked  ~  #nav_slide #dot2

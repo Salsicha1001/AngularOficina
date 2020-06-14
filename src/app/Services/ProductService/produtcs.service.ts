@@ -13,8 +13,8 @@ export class ProdutcsService {
   private loaded : boolean= false;
   private produt:Peca[]=[]
   constructor(private http: HttpClient) { }
-
-
+  
+ 
 //Solucão
   get() {
     return  this.http.get<Peca>(this.url1)
