@@ -66,7 +66,8 @@ import { OsFinalizadoComponent } from './os-finalizado/os-finalizado.component';
 import { ListFunComponent } from './list-fun/list-fun.component';
 import { HistPagComponent } from './hist-pag/hist-pag.component';
 import { RelatorioComponent } from './relatorio/relatorio.component';
-import { RelatorioFuncionarioComponent } from './relatorio-funcionario/relatorio-funcionario.component'; 
+import { RelatorioFuncionarioComponent } from './relatorio-funcionario/relatorio-funcionario.component';
+import { RelaDonoComponent } from './rela-dono/rela-dono.component'; 
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { RelatorioFuncionarioComponent } from './relatorio-funcionario/relatorio
     ListFunComponent,
     HistPagComponent,
     RelatorioComponent,
-    RelatorioFuncionarioComponent
+    RelatorioFuncionarioComponent,
+    RelaDonoComponent
   ],
   imports: [
     HttpClientModule,

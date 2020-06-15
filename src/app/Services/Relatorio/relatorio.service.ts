@@ -13,4 +13,7 @@ export class RelatorioService {
   get(i, f,a){
       return this.http.get<OrdemService[]>(`${this.url}/getrela/${i}/${a}/${f}`)
   }
+  getdono(i, f){
+    return this.http.get<OrdemService[]>(`${this.url}/getreladono/${i}/${f}`)
+}
 }

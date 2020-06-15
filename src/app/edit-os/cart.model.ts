@@ -7,6 +7,7 @@ export interface Cart{
     totalPrice:number,
     CODVERIF?:number,
     GANHOFUN?:number
+    LUCRO?:number
     
 
 }

@@ -6,6 +6,7 @@ import * as _moment from 'moment';
 import {defaultFormatUtc as _rollupMoment} from 'moment';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { RelaDonoComponent } from '../rela-dono/rela-dono.component';
 
 const moment = _rollupMoment || _moment;
 export const MY_FORMATS = {
@@ -42,9 +43,13 @@ export const MY_FORMATS = {
 export class RelatorioComponent implements OnInit {
   datIn:any
   datFin:any
+  datInDono:any
+  datFinDono:any
   FUNCIONARIO:any
   dataInicial:any
   dataFinal:any
+  dataInicialDono:any
+  dataFinalDono:any
   funcion$: any;
   nameFuncio:string[]=[]
   constructor( private dialog:MatDialog, private FuncionarioService:FuncionarioService) { }
@@ -72,12 +77,38 @@ export class RelatorioComponent implements OnInit {
     var finaly = dia+"/"+month+"/"+year
     this.dataFinal = finaly
    }
+   addEventDono($event){
+    var dia = this.datInDono._i.date
+    var month = this.datInDono._i.month+1
+    var year = this.datInDono._i.year
+    var finaly = dia+"/"+month+"/"+year
+    this.dataInicialDono = finaly
+   }
+   addEventFiDono($event){
+     var dia = this.datFinDono._i.date
+     var month = this.datFinDono._i.month+1
+     var year = this.datFinDono._i.year
+     var finaly = dia+"/"+month+"/"+year
+     this.dataFinalDono = finaly
+    }
 onSubmit(){
  
   console.log(this.dataInicial ,this.dataFinal)
   const dialogRef = this.dialog.open(RelatorioFuncionarioComponent, {
     width: '800px',
     data: [this.FUNCIONARIO,this.dataInicial , this.dataFinal],
+
+  });
+  dialogRef.afterClosed().subscribe(result => {
+    
+  })
+}
+onSubmitDono(){
+ 
+  
+  const dialogRef = this.dialog.open(RelaDonoComponent, {
+    width: '800px',
+    data: [this.dataInicialDono , this.dataFinalDono],
 
   });
   dialogRef.afterClosed().subscribe(result => {

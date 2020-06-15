@@ -1,7 +1,5 @@
 <form (ngSubmit)="onSubmit()" #formOS="ngForm">
-<<<<<<< HEAD
-    <h2>Pagamento dos Funcionarios</h2>
-=======
+
     <h3>Pagamento dos Funcionarios</h3>
     <mat-form-field>
       <mat-label>Funcionario</mat-label>
@@ -11,7 +9,7 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
->>>>>>> 
+
     <mat-form-field appearance="legacy">
         <mat-label>Data Inicial</mat-label>
         <input matInput [matDatepicker]="picker" (dateInput)="addEvent($event)"name="datIn" [(ngModel)]="datIn" disabled   required>
@@ -27,4 +25,20 @@
       <button mat-mini-fab color="primary"><mat-icon>done</mat-icon></button>
 
 </form>
-
+<br>
+<h3>Lucro </h3>
+<form (ngSubmit)="onSubmitDono()">
+  <mat-form-field appearance="legacy">
+    <mat-label>Data Inicial</mat-label>
+    <input matInput [matDatepicker]="pickera" (dateInput)="addEventDono($event)"name="datInDono" [(ngModel)]="datInDono" disabled   required>
+    <mat-datepicker-toggle matSuffix [for]="pickera" disabled="false"></mat-datepicker-toggle>
+    <mat-datepicker #pickera disabled="false" ></mat-datepicker>
+  </mat-form-field> 
+  <mat-form-field appearance="legacy">
+    <mat-label>Data Final</mat-label>
+    <input matInput [matDatepicker]="pickergb" (dateInput)="addEventFiDono($event)"name="datFinDono" [(ngModel)]="datFinDono"  disabled required>
+    <mat-datepicker-toggle matSuffix [for]="pickergb" ></mat-datepicker-toggle>
+    <mat-datepicker #pickergb disabled="false" ></mat-datepicker>
+  </mat-form-field> 
+  <button mat-mini-fab color="primary"><mat-icon>done</mat-icon></button>
+</form>
